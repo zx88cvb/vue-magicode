@@ -28,11 +28,17 @@ export default {
         // 设定初始化时slide的索引
         initialSlide: 0,
 
+        // 设定为true时，active slide会居中，而不是默认状态下的居左
+        centeredSlides: true,
+
         // 显示数量
-        slidesPerView: auto,
+        slidesPerView: 'auto',
 
         // 设定slide与左边框的预设偏移量（单位px）
-        slidesOffsetBefore: 100
+        slidesOffsetBefore: 40,
+
+        // 在slide之间设置距离（单位px）
+        spaceBetween: 50
       }
     }
   },
@@ -44,6 +50,12 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+  .wrapper
+    .swiper-slide
+      width: 1170px
+      transition-timing-function: linear
+      img
+        width: 100%
+        border-radius: 4px
 </style>
