@@ -1,3 +1,6 @@
+@media screen and (max-width: 767px)
+  #header .logo i, #header .primary-menu ul, #header .search-box, #header .social-profiles, #header p, .author-a, .header-fixed #header .primary-menu, .ico-eye, .ico-like, .navigation .dots, .navigation a, .pic-posts-box a .title .post-views, .posttime-a, .sidebar, .one-s-footer .link, .ico-cat, .ico-like, .ico-eye, .su-dropdown .J_showAllShareBtn, .warp-post-embed .embed-content p, .posts-default-content p, .posts-gallery-content p, #commentform .form-submit button, .collapse, .paydropdown, .socialdropdown .su-dropbox a span, .posts-cjtz
+      display: none
 head
 .container
   padding-right 15px
@@ -5,10 +8,13 @@ head
   margin-right auto
   margin-left auto
 
+.pull-right
+  float right!important
+
 
 @media (min-width: 1200px)
   .container
-    width 1170px
+    width 1140px
 @media (max-width: 767px)
   .container
     margin-top 0
@@ -17,5 +23,26 @@ head
   .primary-menu
     display none
 
-.pull-right
-  float right!important;
+.post-nav
+  .cat-post
+    padding: 9px 22px
+    margin-right: 15px
+    margin-bottom: 10px
+    cursor: pointer
+    background: #FFF
+    display: inline-block
+    border-radius: 30px
+    font-weight: 600
+
+@media screen and (max-width: 767px)
+  .post-nav
+    position: relative
+    margin-bottom: 0
+    box-shadow: none
+    background: #FFF
+    height: 45px
+    overflow: hidden
+    overflow-x: auto
+    white-space: nowrap
+    width: 100%
+    -webkit-box-pack: justify
