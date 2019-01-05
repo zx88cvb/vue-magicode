@@ -3,9 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// swiper 滑动插件
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+// Element-ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+// 基于断点的隐藏类
+import 'element-ui/lib/theme-chalk/display.css'
 import '../static/css/reset.css'
 import 'assets/stylus/main.styl'
 import 'assets/css/base.css'

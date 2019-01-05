@@ -11,14 +11,20 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   padding: 0;
   border: 0;
   outline: 0;
-  font-size: 14px;
   line-height: 1.4;
   vertical-align: baseline;
   background: transparent;
 }
+body, input, button, select, optgroup, option, textarea, pre {
+  font-family: suxingme,"Open Sans",Arial,"Hiragino Sans GB","Microsoft YaHei","STHeiti","WenQuanYi Micro Hei",SimSun,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
 body {
   line-height: 1;
   background-color: #f6f6f6;
+  font-size: 14px;
 }
 ol, ul {
   list-style: none;
@@ -55,4 +61,15 @@ a {
 button {
   border: 0;
   background: transparent;
+}
+
+/* img */
+img {
+  width: 100%;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
 }

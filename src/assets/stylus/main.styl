@@ -8,6 +8,84 @@ head
   margin-right auto
   margin-left auto
 
+.content
+  position: relative
+  overflow: hidden
+  display: block
+  margin-bottom: 20px
+  background: #FFF
+  -webkit-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1)
+  -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1)
+  box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1)
+  -webkit-transition: all 0.6s ease
+  -moz-transition: all 0.6s ease
+  -o-transition: all 0.6s ease
+  transition: all 0.6s ease
+
+.post-nav 
+  span.current
+  span:hover
+    background: #282828
+    color: #FFF
+    border: 1px solid #282828
+
+.posts-default
+  .content-box
+    padding: 23px 20px
+
+.posts-default-content
+  position: relative
+  line-height: normal
+
+.posts-default-box
+  padding: 22px 0 0
+
+.posts-default-title
+  position: relative
+  margin: 0 0 10px
+
+.posts-default-img 
+  position: relative
+  overflow: hidden
+  max-height: 300px
+  height: auto
+  width: 100%
+
+.posts-default-img a
+  position: relative
+  display: block
+.posts-default-img
+  .overlay
+    opacity: 0
+    &:hover
+      opacity: 0.5
+
+.posts-default-info
+  position: relative
+  ul
+    li
+      font-size: 12px
+      letter-spacing: .2px
+      padding: 0
+      margin: 0 5px 0 0
+      color: #748594
+      position: relative
+      line-height: 1.5
+      display: inline-block
+
+.overlay
+  width: 100%
+  height: 100%
+  background: #000
+  -webkit-transition: opacity .4s ease-in-out
+  transition: opacity .4s ease-in-out
+  position: absolute
+  opacity: .5
+.thumbnail
+  border: 0
+  padding: 0
+  border-radius: 0
+  margin: 0
 .pull-right
   float right!important
 
@@ -46,3 +124,14 @@ head
     white-space: nowrap
     width: 100%
     -webkit-box-pack: justify
+    .cat-post
+      position: relative
+      padding: 0
+      height: 45px
+      line-height: 45px
+      font-size: 14px
+      border-radius: 0
+      box-shadow: none
+      margin: 0 5px 0 12px
+      color: #748594
+      border-width: 0
