@@ -33,7 +33,7 @@
         </button>
 
       </div>
-      <div class="navbar-mobile">
+      <div class="navbar-mobile hidden-lg-and-up">
         <div class="iconfont back-icon">&#xe624;</div>
       </div>
     </div>
@@ -58,12 +58,20 @@ export default {
     overflow: hidden
     .logo
       position: relative
-      width: 60px
-      height: 60px
       float: left
       margin-right: 20px
       a
-        bg-image('~assets/logo')
+        // bg-image('~assets/logo')
+        transition: none
+        background-size: contain
+        background-position: left center
+        background-repeat: no-repeat
+        text-indent: -9999px
+        display: block
+        position: relative
+        width: 220px
+        height: 80px
+        background-image: url(https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/img/logo.png)
     .site-nav
       position: relative
       float: left

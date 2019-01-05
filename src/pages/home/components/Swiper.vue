@@ -34,7 +34,7 @@ export default {
         slidesPerView: 'auto',
 
         // 设定slide与左边框的预设偏移量（单位px）
-        slidesOffsetBefore: 40,
+        slidesOffsetBefore: 0,
 
         // 在slide之间设置距离（单位px）
         spaceBetween: 20,

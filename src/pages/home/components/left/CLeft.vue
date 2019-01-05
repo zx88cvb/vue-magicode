@@ -76,7 +76,7 @@ export default {
       margin-bottom: 15px
       span
         position: relative
-        border: 1px solid #eae9e9
+        // border: 1px solid #eae9e9
         box-shadow: 0 0 10px 0 rgba(146, 146, 146, .1)
     .posts-con
       .posts-default

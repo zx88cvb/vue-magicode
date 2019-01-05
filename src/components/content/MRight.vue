@@ -45,6 +45,77 @@
           </li>
         </ul>
       </div>
+      <div class="widget widget_hotpost">
+        <h3>
+          <span>热评文章</span>
+        </h3>
+        <ul>
+          <li class="item">
+            <a href="#">
+              <div class="overlay"></div>
+              <img class="lazy thumbnail" data-original="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2017/09/2018081117141885.jpg&amp;h=170&amp;w=299.98&amp;zc=1" src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2017/09/2018081117141885.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="多图: 全球最大一颗钻石卖掉， 在南非博茨瓦纳一座矿场发现了一颗和网球一般大小的钻石原石" style="display: block;">
+              <div class="title">
+                <div class="entry-meta">
+                  <span>2017-09-28</span>
+                  <span>
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-weibiaoti103"></use>
+                    </svg>
+                    25
+                  </span>
+                </div>
+                <h4>多图: 全球最大一颗钻石卖掉， 在南非博茨瓦纳一座矿场发现了一颗和网球一般大小的钻石原石</h4>
+              </div>
+            </a>
+          </li>
+          <li class="item">
+            <a href="#">
+              <div class="overlay"></div>
+              <img class="lazy thumbnail" data-original="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2017/09/2018081117141885.jpg&amp;h=170&amp;w=299.98&amp;zc=1" src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2017/09/2018081117141885.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="多图: 全球最大一颗钻石卖掉， 在南非博茨瓦纳一座矿场发现了一颗和网球一般大小的钻石原石" style="display: block;">
+              <div class="title">
+                <div class="entry-meta">
+                  <span>2017-09-28</span>
+                  <span>
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-weibiaoti103"></use>
+                    </svg>
+                    25
+                  </span>
+                </div>
+                <h4>多图: 全球最大一颗钻石卖掉， 在南非博茨瓦纳一座矿场发现了一颗和网球一般大小的钻石原石</h4>
+              </div>
+            </a>
+          </li>
+          <li class="item">
+            <a href="#">
+              <div class="overlay"></div>
+              <img class="lazy thumbnail" data-original="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2017/09/2018081117141885.jpg&amp;h=170&amp;w=299.98&amp;zc=1" src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2017/09/2018081117141885.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="多图: 全球最大一颗钻石卖掉， 在南非博茨瓦纳一座矿场发现了一颗和网球一般大小的钻石原石" style="display: block;">
+              <div class="title">
+                <div class="entry-meta">
+                  <span>2017-09-28</span>
+                  <span>
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-weibiaoti103"></use>
+                    </svg>
+                    25
+                  </span>
+                </div>
+                <h4>多图: 全球最大一颗钻石卖掉， 在南非博茨瓦纳一座矿场发现了一颗和网球一般大小的钻石原石</h4>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="widget widget_tag">
+        <h3>
+          <span>热门标签</span>
+        </h3>
+        <div class="tags">
+          <div class="tag_items">
+            <a href="#">Spring</a>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 
@@ -82,7 +153,7 @@ export default {
           position: relative
           margin-top: 20px
           overflow: hidden
-        li.one
+        li.one,.item
           a
             position: relative
             overflow: hidden
@@ -112,6 +183,11 @@ export default {
                 -webkit-box-orient: vertical
                 display: -webkit-box
                 -webkit-line-clamp: 2
+              .entry-meta
+                margin-bottom: 5px
+                span
+                  display: inline
+                  margin-right: 10px
         li.others
           height: 75px
           .image
@@ -138,4 +214,15 @@ export default {
               color: #9A9A9A
               position: absolute
               bottom: 0
+      .tag_items
+        a
+          display: inline-block
+          font-size: 12px
+          line-height: 1
+          padding: 6px 12px 4px 12px
+          margin: 0 8px 8px 0
+          border: 1px solid #e0e0e0
+          border-radius: 2px
+          color: rgba(0, 0, 0, .44)
+          background-color: rgba(255, 255, 255, .97)
 </style>
