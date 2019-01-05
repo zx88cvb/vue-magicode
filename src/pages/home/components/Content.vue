@@ -7,7 +7,7 @@
           <home-left></home-left>
         </el-col>
         <!-- 右侧推荐 -->
-        <el-col :xs="24" :sm="8" :md="8" :span="24" class="sidebar">
+        <el-col :xs="24" :sm="8" :md="8" :span="24">
           <m-right></m-right>
         </el-col>
       </el-row>
