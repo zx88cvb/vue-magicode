@@ -4,11 +4,33 @@ import Home from 'pages/home/Home'
 
 Vue.use(Router)
 
+// 新闻详情页
+const NewsDetail = (resolve) => {
+  import('pages/news/News').then((module) => {
+    resolve(module)
+  })
+}
+
+// 分类
+const Category = (resolve) => {
+  import('pages/category/Category').then((module) => {
+    resolve(module)
+  })
+}
+
 export default new Router({
   routes: [
     {
       path: '/',
       component: Home
+    },
+    {
+      path: 'news/:id',
+      component: NewsDetail
+    },
+    {
+      path: '/category/:id',
+      component: Category
     }
   ]
 })

@@ -9,10 +9,10 @@
         <div class="menu-fix-box">
           <nav>
             <ul>
-              <li><a href="">首页</a></li>
-              <li><a href="">商业</a></li>
-              <li><a href="">设计</a></li>
-              <li><a href="">时尚</a></li>
+              <router-link tag="li" :to="'/'"><a href="">首页</a></router-link>
+              <router-link tag="li" :to="'/category/'+1"><a href="">商业</a></router-link>
+              <router-link tag="li" :to="'/category/'+1"><a href="">设计</a></router-link>
+              <router-link tag="li" :to="'/category/'+1"><a href="">时尚</a></router-link>
             </ul>
           </nav>
         </div>

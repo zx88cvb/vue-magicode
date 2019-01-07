@@ -18,6 +18,4 @@ export default {
 </script>
 
 <style scoped lang="stylus">
-  .page-content
-    padding: 20px 0
 </style>
