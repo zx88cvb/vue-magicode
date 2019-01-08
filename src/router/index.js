@@ -6,7 +6,7 @@ Vue.use(Router)
 
 // 新闻详情页
 const NewsDetail = (resolve) => {
-  import('pages/news/News').then((module) => {
+  import('pages/detail/Detail').then((module) => {
     resolve(module)
   })
 }
@@ -25,7 +25,7 @@ export default new Router({
       component: Home
     },
     {
-      path: 'news/:id',
+      path: '/news/:id',
       component: NewsDetail
     },
     {

@@ -3,7 +3,7 @@
     <div class="content ajax-load-con posts-default wow">
       <div class="content-box">
         <div class="posts-default-img">
-          <a href="#" target="_blank">
+          <a href="#" @click="selectItem(1)">
             <div class="overlay"></div>
             <img
               src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115211363.jpg&h=284&w=710&zc=1"
@@ -11,12 +11,12 @@
           </a>
         </div>
         <div class="posts-default-box">
-          <div class="posts-default-title">
+          <div class="posts-default-title" @click="selectItem(1)">
             <h2>
               <a href="#">60 年代英国嬉皮士们的精神食粮，端看这些“地下杂志”</a>
             </h2>
           </div>
-          <div class="posts-default-content">
+          <div class="posts-default-content" @click="selectItem(1)">
             <div
               class="posts-text"
             >整个 1960 年代后半期，正处在“摇摆伦敦”（Swinging London）时期的伦敦城里，具有叛逆精神的时装、音乐、文学、电影如火如荼地交替上演。 作家 Barry Miles 和摄影师、记者 …</div>
@@ -72,7 +72,12 @@
 
 <script>
 export default {
-  name: 'MList'
+  name: 'MList',
+  methods: {
+    selectItem (item) {
+      this.$emit('select', item)
+    }
+  }
 }
 </script>
 
@@ -100,6 +105,7 @@ export default {
               line-height: 1.6
               margin-bottom: 20px
               color: #566573
+              cursor: pointer
             .posts-default-info
               ul
                 li.post-author

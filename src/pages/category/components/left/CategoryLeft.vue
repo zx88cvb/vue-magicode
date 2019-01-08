@@ -9,7 +9,7 @@
         <span class="current">商业</span>
       </span>
     </div>
-    <m-list></m-list>
+    <m-list @select="selectNews"></m-list>
   </div>
 </template>
 
@@ -19,6 +19,13 @@ export default {
   name: 'categoryLeft',
   components: {
     MList
+  },
+  methods: {
+    selectNews (item) {
+      this.$router.push({
+        path: `/news/${item}`
+      })
+    }
   }
 }
 </script>
