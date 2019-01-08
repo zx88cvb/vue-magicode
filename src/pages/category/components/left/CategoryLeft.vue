@@ -1,18 +1,25 @@
 <template>
-  <div class="breadcrumbs">
-    <span>
-      <router-link :to="'/'">
-        <span>首页</span>
-      </router-link>
-      <span class="sep">></span>
-      <span class="current">商业</span>
-    </span>
+  <div class="c_left">
+    <div class="breadcrumbs">
+      <span>
+        <router-link :to="'/'">
+          <span>首页</span>
+        </router-link>
+        <span class="sep">></span>
+        <span class="current">商业</span>
+      </span>
+    </div>
+    <m-list></m-list>
   </div>
 </template>
 
 <script>
+import MList from 'components/content/MList'
 export default {
-  name: 'categoryLeft'
+  name: 'categoryLeft',
+  components: {
+    MList
+  }
 }
 </script>
 
