@@ -61,22 +61,34 @@
         </div>
       </div>
       <div class="post-content">
-        <div class="clearfix"></div>
-        <div class="post-options">
-          <a href="#" title="like">
-            <span class="icon s-like">
-            </span>
-            <span class="count num">520</span>
-          </a>
-        </div>
+        作家 Barry Miles 和摄影师、记者 John Hopkins 以及他们的一群朋友先是在 1966 年联合创刊了一本名为 International Times 的报纸，这是欧洲第一个地下媒体。一年后，他们又发布了另一本英国重要的地下杂志 Oz Magazine，那一年，全美国的嬉皮士们奔赴旧金山参加一个名为“爱之夏”的盛会。
+
+这些报纸和杂志往往都在一些音乐节或者社区街角售卖，因而收获了一群稳定的观众群。内容大多都关于另类的音乐、艺术、影像等等。第一刊 International Times 就刊登了关于英国摇滚乐队 Machine 和 Pink Floyd 的报道。而 Oz Magazine 则将一大群迷幻艺术家、善于运用鲜艳色彩的平面设计师、时装设计师和艺术装置介绍给当时的年轻人。
+      </div>
+      <div class="clearfix"></div>
+      <div class="post-options">
+        <a href="#" title="like" class="btn-likes like current">
+          <span class="s-like">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-like"></use>
+            </svg>
+            like
+          </span>
+          <span class="count num">(520)</span>
+        </a>
       </div>
     </div>
+    <message></message>
   </div>
 </template>
 
 <script>
+import Message from 'components/message/Message'
 export default {
-  name: 'detailLeft'
+  name: 'detailLeft',
+  components: {
+    Message
+  }
 }
 </script>
 
@@ -110,4 +122,29 @@ export default {
             -webkit-border-radius: 50%
             border: 1px solid rgba(216, 216, 216, 0.81)
             margin-right: 10px
+    .post-options
+      .btn-likes
+        width: 130px
+        height: 40px
+        line-height: 40px
+        border: 1px solid #F74840
+        box-shadow: none
+        background: #fff
+        display: inline-block
+        text-align: center
+        margin: 0 2px
+        color: #F74840
+        font-size: 14px
+        text-decoration: none
+        border-radius: 0
+        -webkit-transition: all .3s ease
+        -o-transition: all .3s ease
+        transition: all .3s ease
+        border-radius: 2px
+        -moz-border-radius: 2px
+        -webkit-border-radius: 2px
+      .btn-likes.current
+        background-color: #F74840
+        color: #fff
+        border-color: #F74840
 </style>
