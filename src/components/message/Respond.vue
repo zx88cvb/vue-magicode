@@ -8,7 +8,7 @@
         </span>
       </h3>
       <el-form action="/" id="commentform">
-        <el-row id="comment-author-info" class="clearfix">
+        <el-row id="comment-author-info" class="clearfix" :gutter="20">
           <el-col :span="8">
             <el-form-item label="昵称">
               <el-input placeholder="昵称"></el-input>
@@ -22,6 +22,22 @@
           <el-col :span="8">
             <el-form-item label="网址">
               <el-input placeholder="网址"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row class="clearfix">
+          <el-col :span="24">
+            <el-form-item>
+              <el-input type="textarea"
+               :autosize="{ minRows: 6, maxRows: 12}"
+               placeholder="说的什么吧…"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+        <el-row class="form-submit">
+          <el-col :span="24">
+            <el-form-item>
+              <el-button class="btn-comment pull-right" type="primary">发表评论</el-button>
             </el-form-item>
           </el-col>
         </el-row>
@@ -62,4 +78,6 @@ export default {
         color: #ddd
     .commentform
       margin-top: 20px
+      .form-submit
+        position: relative
 </style>

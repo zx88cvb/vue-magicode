@@ -16,9 +16,10 @@
               <a href="#">60 年代英国嬉皮士们的精神食粮，端看这些“地下杂志”</a>
             </h2>
           </div>
-          <div class="posts-default-content" @click="selectItem(1)">
+          <div class="posts-default-content">
             <div
               class="posts-text"
+               @click="selectItem(1)"
             >整个 1960 年代后半期，正处在“摇摆伦敦”（Swinging London）时期的伦敦城里，具有叛逆精神的时装、音乐、文学、电影如火如荼地交替上演。 作家 Barry Miles 和摄影师、记者 …</div>
             <div class="posts-default-info">
               <ul>
