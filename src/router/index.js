@@ -18,6 +18,13 @@ const Category = (resolve) => {
   })
 }
 
+// 友情链接
+const Links = (resolve) => {
+  import('pages/links/Links').then((module) => {
+    resolve(module)
+  })
+}
+
 export default new Router({
   routes: [
     {
@@ -31,6 +38,10 @@ export default new Router({
     {
       path: '/category/:id',
       component: Category
+    },
+    {
+      path: '/links',
+      component: Links
     }
   ]
 })

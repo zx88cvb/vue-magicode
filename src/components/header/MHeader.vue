@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="navbar-fixed-top">
     <div class="container">
       <h1 class="logo">
         <a href=""></a>
@@ -13,6 +13,7 @@
               <router-link tag="li" :to="'/category/'+1"><a href="">商业</a></router-link>
               <router-link tag="li" :to="'/category/'+1"><a href="">设计</a></router-link>
               <router-link tag="li" :to="'/category/'+1"><a href="">时尚</a></router-link>
+              <router-link tag="li" :to="'/links'"><a href="">友情链接</a></router-link>
             </ul>
           </nav>
         </div>
@@ -53,6 +54,12 @@ export default {
   header
     background: #fff
     box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.08)
+    top: 0
+  .navbar-fixed-top
+    position: fixed
+    right: 0
+    left: 0
+    z-index: 10
   .container
     position: relative
     overflow: hidden
