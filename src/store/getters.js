@@ -6,3 +6,10 @@ export const news = (state) => {
   }
   return state.news
 }
+
+export const singleNew = (state) => {
+  if (!state.singleNew) {
+    state.singleNew = JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) ? JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) : {}
+  }
+  return state.singleNew
+}

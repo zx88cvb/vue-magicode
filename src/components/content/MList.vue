@@ -1,66 +1,64 @@
 <template>
   <div class="posts-con">
-    <div class="content ajax-load-con posts-default wow">
+    <div class="content ajax-load-con posts-default wow" v-for="(item) of news" :key="item.id">
       <div class="content-box">
         <div class="posts-default-img">
-          <a href="#" @click="selectItem(1)">
+          <a href="#" @click="selectItem(item.id)">
             <div class="overlay"></div>
             <img
-              src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115211363.jpg&h=284&w=710&zc=1"
+              :src="_imgPath(item.thumbnail)"
             >
           </a>
         </div>
         <div class="posts-default-box">
-          <div class="posts-default-title" @click="selectItem(1)">
+          <div class="posts-default-title" @click="selectItem(item.id)">
             <h2>
-              <a href="#">60 年代英国嬉皮士们的精神食粮，端看这些“地下杂志”</a>
+              <a href="#">{{item.title}}</a>
             </h2>
           </div>
           <div class="posts-default-content">
             <div
               class="posts-text"
-               @click="selectItem(1)"
-            >整个 1960 年代后半期，正处在“摇摆伦敦”（Swinging London）时期的伦敦城里，具有叛逆精神的时装、音乐、文学、电影如火如荼地交替上演。 作家 Barry Miles 和摄影师、记者 …</div>
+               @click="selectItem(item.id)"
+            >{{item.excerpt}}</div>
             <div class="posts-default-info">
               <ul>
                 <li class="post-author hidden-sm-only hidden-xs-only">
                   <div class="avatar">
                     <img
                       alt
-                      src="https://secure.gravatar.com/avatar/afa39accf8700cbbe7b13e1d01aa5b17?s=96&amp;d=mm&amp;r=g"
-                      data-original="https://secure.gravatar.com/avatar/afa39accf8700cbbe7b13e1d01aa5b17?s=96&amp;d=mm&amp;r=g"
-                      srcset="https://secure.gravatar.com/avatar/afa39accf8700cbbe7b13e1d01aa5b17?s=192&amp;d=mm&amp;r=g 2x"
+                      :src="_imgPath(item.thumbnail)"
                       class="avatar avatar-96 photo"
                       height="96"
                       width="96"
                       style="display: block;"
                     >
                   </div>
-                  <a href="#" target="_blank">nicetheme</a>
+                  <a href="#" target="_blank">{{item.author}}</a>
                 </li>
                 <li class="ico-cat">
                   <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-category"></use>
                   </svg>
-                  <a href="#">设计</a>
+                  <a href="#">{{item.blogCategoryVo.categoryName}}</a>
                 </li>
                 <li class="ico-time">
                   <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-time"></use>
                   </svg>
-                  2019-1-5
+                  {{item.postTime}}
                 </li>
                 <li class="ico-eye hidden-sm-only hidden-xs-only">
                   <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-eye"></use>
                   </svg>
-                  999
+                  {{item.browseCount}}
                 </li>
                 <li class="ico-like hidden-sm-only hidden-xs-only">
                   <svg class="icon" aria-hidden="true">
                     <use xlink:href="#icon-like"></use>
                   </svg>
-                  520
+                  {{item.pollCount}}
                 </li>
               </ul>
             </div>
@@ -72,11 +70,20 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'MList',
+  computed: {
+    ...mapGetters([
+      'news'
+    ])
+  },
   methods: {
     selectItem (item) {
       this.$emit('select', item)
+    },
+    _imgPath (img) {
+      return `imgPath/${img}`
     }
   }
 }

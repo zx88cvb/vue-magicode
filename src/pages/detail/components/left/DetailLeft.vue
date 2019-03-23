@@ -9,7 +9,7 @@
             </router-link>
             <span class="sep">></span>
             <span class="current">
-              <router-link :to="'/'">商业</router-link>
+              <router-link :to="'/'">{{singleNew.blogCategoryVo.categoryName}}</router-link>
             </span>
             <span class="sep">></span>
             <span class="current">
@@ -17,7 +17,7 @@
             </span>
           </span>
         </div>
-        <h1 class="title">60 年代英国嬉皮士们的精神食粮，端看这些“地下杂志”</h1>
+        <h1 class="title">{{singleNew.title}}</h1>
         <div class="post_icon">
           <span class="postauthor">
             <img
@@ -29,41 +29,38 @@
                 height="96"
                 width="96"
               >
-            <a href="#" target="_blank">nicetheme</a>
+            <a href="#" target="_blank">{{singleNew.author}}</a>
           </span>
           <span class="postcat">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-category"></use>
             </svg>
-            <a href="#">设计</a>
+            <a href="#">{{singleNew.blogCategoryVo.categoryName}}</a>
           </span>
           <span class="postclock">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-time"></use>
             </svg>
-            2019-1-5
+            {{singleNew.postTime}}
           </span>
           <span class="posteye">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-eye"></use>
             </svg>
-            999
+            {{singleNew.browseCount}}
           </span>
           <span class="postcomment">
-            1
+            {{singleNew.commentCount}}
           </span>
           <span class="postlike">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-like"></use>
             </svg>
-            520
+            {{singleNew.pollCount}}
           </span>
         </div>
       </div>
-      <div class="post-content">
-        作家 Barry Miles 和摄影师、记者 John Hopkins 以及他们的一群朋友先是在 1966 年联合创刊了一本名为 International Times 的报纸，这是欧洲第一个地下媒体。一年后，他们又发布了另一本英国重要的地下杂志 Oz Magazine，那一年，全美国的嬉皮士们奔赴旧金山参加一个名为“爱之夏”的盛会。
-
-这些报纸和杂志往往都在一些音乐节或者社区街角售卖，因而收获了一群稳定的观众群。内容大多都关于另类的音乐、艺术、影像等等。第一刊 International Times 就刊登了关于英国摇滚乐队 Machine 和 Pink Floyd 的报道。而 Oz Magazine 则将一大群迷幻艺术家、善于运用鲜艳色彩的平面设计师、时装设计师和艺术装置介绍给当时的年轻人。
+      <div class="post-content" v-html="singleNew.content">
       </div>
       <div class="clearfix"></div>
       <div class="post-options">
@@ -74,7 +71,7 @@
             </svg>
             like
           </span>
-          <span class="count num">(520)</span>
+          <span class="count num">({{singleNew.commentCount}})</span>
         </a>
       </div>
     </div>
@@ -83,11 +80,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Message from 'components/message/Message'
 export default {
   name: 'detailLeft',
   components: {
     Message
+  },
+  computed: {
+    ...mapGetters([
+      'singleNew'
+    ])
   }
 }
 </script>

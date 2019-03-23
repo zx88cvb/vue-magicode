@@ -10,7 +10,36 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/userapi':{
+        target:'http://localhost:8082/userapi',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+          '^/userapi':''
+        }
+      },
+      '/blogapi':{
+        target:'http://localhost:8082/blogapi',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+          '^/blogapi':''
+        }
+      },
+      '/adapi':{
+        target:'http://localhost:8082/adapi',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+          '^/adapi':''
+        }
+      },
+      '/imgPath':{
+        target:'http://cdn.angelive.fun',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+            '^/imgPath':''
+        }
+      },
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

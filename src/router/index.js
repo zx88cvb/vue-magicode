@@ -33,7 +33,8 @@ export default new Router({
     },
     {
       path: '/news/:id',
-      component: NewsDetail
+      component: NewsDetail,
+      props: true
     },
     {
       path: '/category/:id',

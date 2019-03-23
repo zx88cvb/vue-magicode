@@ -7,7 +7,7 @@
       <span class="cat-post">短片</span>
       <span class="cat-post">设计</span>
     </div>
-    <m-list></m-list>
+    <m-list @select="selectNews"></m-list>
   </div>
 </template>
 
@@ -17,6 +17,13 @@ export default {
   name: 'HomeLeft',
   components: {
     MList
+  },
+  methods: {
+    selectNews (item) {
+      this.$router.push({
+        path: `/news/${item}`
+      })
+    }
   }
 }
 </script>
