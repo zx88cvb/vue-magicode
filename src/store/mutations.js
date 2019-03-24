@@ -11,11 +11,11 @@ const mutations = {
   },
   [types.SET_SINGLE_NEW] (state, singleNew) {
     state.singleNew = singleNew
-    try {
-      localStorage.setItem(types.SET_SINGLE_NEW, JSON.stringify(singleNew))
-    } catch (e) {
-      console.log(e)
-    }
+    // try {
+    //   localStorage.setItem(types.SET_SINGLE_NEW, JSON.stringify(singleNew))
+    // } catch (e) {
+    //   console.log(e)
+    // }
   }
 }
 

@@ -7,8 +7,8 @@
 <script>
 import { mapActions } from 'vuex'
 import DetailContent from 'pages/detail/components/Content'
-import { ERR_OK } from 'common/js/config'
-import { getBlogArticleById } from 'api/blog/article'
+// import { ERR_OK } from 'common/js/config'
+// import { getBlogArticleById } from 'api/blog/article'
 export default {
   name: 'detail',
   props: {
@@ -28,15 +28,16 @@ export default {
   },
   methods: {
     _getBlogArticleById () {
-      let _this = this
-      getBlogArticleById(this.id).then((res) => {
-        if (res.code === ERR_OK) {
-          // 将列表数据放入 vuex actions中
-          _this.singleNew(res)
-        }
-      }).catch(function (response) {
-        _this.$message.error(response.message)
-      })
+      // let _this = this
+      // getBlogArticleById(this.id).then((res) => {
+      //   if (res.code === ERR_OK) {
+      //     // 将列表数据放入 vuex actions中
+      //     _this.singleNew(res)
+      //   }
+      // }).catch(function (response) {
+      //   _this.$message.error(response.message)
+      // })
+      this.singleNew(this.id)
     },
     ...mapActions([
       'singleNew'
