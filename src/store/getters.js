@@ -8,5 +8,15 @@ export const news = (state) => {
 }
 
 export const singleNew = (state) => {
+  if (!state.singleNew) {
+    state.singleNew = JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) ? JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) : {}
+  }
   return state.singleNew
+}
+
+export const randNews = (state) => {
+  if (!state.randNews) {
+    state.randNews = JSON.parse(localStorage.getItem(types.SET_RAND_NEWS)) ? JSON.parse(localStorage.getItem(types.SET_RAND_NEWS)) : {}
+  }
+  return state.randNews
 }

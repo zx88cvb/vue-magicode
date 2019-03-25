@@ -7,17 +7,48 @@
           </span>
         </h3>
         <ul class="recent-posts-widget">
-          <li class="one">
-            <a href="#">
+          <li v-for="(item, index) of randNews"
+            :key="item.id"
+            :class="[ index === 0 ? 'one' : 'others']"
+            >
+            <router-link :to="`/news/${item.id}`"
+             tag="a"
+             v-if="index === 0">
               <div class="overlay"></div>
-              <img class="lazy thumbnail" data-original="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115115913.jpg&amp;h=170&amp;w=299.98&amp;zc=1" src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115115913.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="为了让人开车不打瞌睡，松下研发了一款预警系统" style="display: block;">
+              <img class="lazy thumbnail"
+               :src="_imgPath(item.thumbnail)"
+               :alt="item.title"
+                style="display: block;">
               <div class="title">
-                <span>2019-1-5</span>
-                <h4>为了让人开车不打瞌睡，松下研发了一款预警系统</h4>
+                <span>{{item.postTime}}</span>
+                <h4>{{item.title}}</h4>
               </div>
-            </a>
+            </router-link>
+
+            <span v-else>
+              <div class="image">
+                <router-link :to="`/news/${item.id}`" tag="a">
+                  <img class="lazy thumbnail"
+                  :src="_imgPath(item.thumbnail)"
+                  alt="item.title"
+                  style="display: block;">
+                </router-link>
+                <!-- <a href="https://demo.nicetheme.xyz/grace-style1/1779.html" :title="item.title">
+                  <img class="lazy thumbnail"
+                  :src="_imgPath(item.thumbnail)"
+                  alt="item.title"
+                  style="display: block;">
+                </a> -->
+              </div>
+              <div class="title">
+                <router-link :to="`/news/${item.id}`" tag="h4">
+                  <a href="#">{{item.title}}</a>
+                </router-link>
+                <span>{{item.postTime}}</span>
+              </div>
+            </span>
           </li>
-          <li class="others">
+          <!-- <li class="others">
             <div class="image">
               <a href="https://demo.nicetheme.xyz/grace-style1/1779.html" title="新 iPhone 换了玻璃后盖，维修的难度成本都变高了">
                 <img class="lazy thumbnail" data-original="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115212786.jpg&amp;h=75&amp;w=100&amp;zc=1" src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115212786.jpg&amp;h=75&amp;w=100&amp;zc=1" alt="新 iPhone 换了玻璃后盖，维修的难度成本都变高了" style="display: block;">
@@ -42,7 +73,7 @@
               </h4>
               <span>2019-1-5</span>
             </div>
-          </li>
+          </li> -->
         </ul>
       </div>
       <div class="widget widget_hotpost">
@@ -120,8 +151,25 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
-  name: 'MRight'
+  name: 'MRight',
+  computed: {
+    ...mapGetters([
+      'randNews'
+    ])
+  },
+  created () {
+    this.randNews()
+  },
+  methods: {
+    _imgPath (img) {
+      return `imgPath/${img}`
+    },
+    ...mapActions([
+      'randNews'
+    ])
+  }
 }
 </script>
 

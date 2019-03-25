@@ -91,9 +91,6 @@ export default {
     ...mapGetters([
       'singleNew'
     ])
-  },
-  created () {
-    this.singleNew()
   }
 }
 </script>
