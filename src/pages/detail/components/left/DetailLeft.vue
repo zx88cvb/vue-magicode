@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+// import { mapGetters } from 'vuex'
 import Message from 'components/message/Message'
 export default {
   name: 'detailLeft',
@@ -88,9 +88,15 @@ export default {
     Message
   },
   computed: {
-    ...mapGetters([
-      'singleNew'
-    ])
+    // ...mapGetters([
+    //   'singleNew'
+    // ])
+    singleNew () {
+      return this.$store.getters.singleNew
+    }
+  },
+  activated () {
+    this.singleNew()
   }
 }
 </script>

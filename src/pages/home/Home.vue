@@ -10,7 +10,7 @@ import { mapActions } from 'vuex'
 import HomeSwiper from 'pages/home/components/Swiper'
 import MainContent from 'pages/home/components/Content'
 import { ERR_OK } from 'common/js/config'
-import { getBlogArticlePage } from 'api/blog/article'
+import { getBlogArticlePage, getRand } from 'api/blog/article'
 export default {
   name: 'home',
   components: {
@@ -25,6 +25,8 @@ export default {
   created () {
     // 获取新闻数据
     this._getBlogArticlePage()
+
+    this._getRand()
   },
   methods: {
     _getBlogArticlePage () {
@@ -36,8 +38,18 @@ export default {
         }
       })
     },
+    _getRand () {
+      getRand().then((res) => {
+        if (res.code === ERR_OK) {
+          // 将列表数据放入 vuex actions中
+          this.saveRandNews(res)
+        }
+      })
+      // this.saveRandNews('{a: 1, b: 2}')
+    },
     ...mapActions([
-      'news'
+      'news',
+      'saveRandNews'
     ])
   }
 }

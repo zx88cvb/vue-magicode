@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import MList from 'components/content/MList'
 export default {
   name: 'HomeLeft',
@@ -20,10 +21,14 @@ export default {
   },
   methods: {
     selectNews (item) {
+      this.singleNew(item)
       this.$router.push({
         path: `/news/${item}`
       })
-    }
+    },
+    ...mapActions([
+      'singleNew'
+    ])
   }
 }
 </script>

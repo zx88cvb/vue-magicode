@@ -1,7 +1,7 @@
 const state = {
   news: [],
   singleNew: null,
-  randNews: []
+  randNews: null
 }
 
 export default state

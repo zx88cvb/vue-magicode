@@ -44,5 +44,13 @@ export default new Router({
       path: '/links',
       component: Links
     }
-  ]
+  ],
+  // 跳转页面回顶部
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })

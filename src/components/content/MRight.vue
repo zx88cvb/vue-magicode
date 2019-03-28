@@ -16,6 +16,8 @@
              v-if="index === 0">
               <div class="overlay"></div>
               <img class="lazy thumbnail"
+                width="300"
+                height="170"
                :src="_imgPath(item.thumbnail)"
                :alt="item.title"
                 style="display: block;">
@@ -29,6 +31,8 @@
               <div class="image">
                 <router-link :to="`/news/${item.id}`" tag="a">
                   <img class="lazy thumbnail"
+                  height="75"
+                  width="100"
                   :src="_imgPath(item.thumbnail)"
                   alt="item.title"
                   style="display: block;">
@@ -151,7 +155,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   name: 'MRight',
   computed: {
@@ -159,16 +163,10 @@ export default {
       'randNews'
     ])
   },
-  created () {
-    this.randNews()
-  },
   methods: {
     _imgPath (img) {
       return `imgPath/${img}`
-    },
-    ...mapActions([
-      'randNews'
-    ])
+    }
   }
 }
 </script>
