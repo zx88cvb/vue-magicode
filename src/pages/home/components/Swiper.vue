@@ -2,10 +2,14 @@
   <div class="wrapper">
     <swiper :options="swiperOption" ref="mySwiper">
       <!-- slides -->
-      <swiper-slide><img src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2017/09/2018081117141885.jpg&h=450&w=1170"/></swiper-slide>
-      <swiper-slide><img src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081116390023.jpg&h=450&w=1170"/></swiper-slide>
+      <swiper-slide v-for="item of swiperList" :key="item.id">
+        <!-- <a :href="item.adGroupContextVo.linkUrl"> -->
+          <img :src="$imgPath(item.adGroupContextVo.imgUrl)" width="1170" height="450" @click="handleLoopClick(item)"/>
+        <!-- </a> -->
+      </swiper-slide>
+      <!-- <swiper-slide><img src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081116390023.jpg&h=450&w=1170"/></swiper-slide>
       <swiper-slide><img src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081116391818-e1533978162780.jpg&h=450&w=1170"/></swiper-slide>
-      <swiper-slide><img src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115114442-e1533974263195.jpg&h=450&w=1170"/></swiper-slide>
+      <swiper-slide><img src="https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/timthumb.php?src=https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081115114442-e1533974263195.jpg&h=450&w=1170"/></swiper-slide> -->
       <div class="swiper-pagination"  slot="pagination"></div>
       <div class="swiper-button-prev swiper-button-white" slot="button-prev"></div>
       <div class="swiper-button-next swiper-button-white" slot="button-next"></div>
@@ -16,6 +20,11 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    swiperList: {
+      type: Array
+    }
+  },
   data () {
     return {
       swiperOption: {
@@ -58,6 +67,11 @@ export default {
   computed: {
     swiper () {
       return this.$refs.mySwiper.swiper
+    }
+  },
+  methods: {
+    handleLoopClick (item) {
+      this.$emit('handleLoopClick', item)
     }
   }
 }

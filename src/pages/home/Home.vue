@@ -1,6 +1,6 @@
 <template>
   <div class="page-content">
-    <home-swiper></home-swiper>
+    <home-swiper :swiperList='swiperList' @handleLoopClick='handleLoopClick'></home-swiper>
     <main-content></main-content>
   </div>
 </template>
@@ -11,6 +11,7 @@ import HomeSwiper from 'pages/home/components/Swiper'
 import MainContent from 'pages/home/components/Content'
 import { ERR_OK } from 'common/js/config'
 import { getBlogArticlePage, getRand } from 'api/blog/article'
+import { getContentByTypeAndGroup } from 'api/ad/content'
 export default {
   name: 'home',
   components: {
@@ -27,6 +28,8 @@ export default {
     this._getBlogArticlePage()
 
     this._getRand()
+
+    this.getIndexLoop()
   },
   methods: {
     _getBlogArticlePage () {
@@ -46,6 +49,23 @@ export default {
         }
       })
       // this.saveRandNews('{a: 1, b: 2}')
+    },
+    // 获取轮播图
+    // 查询广告内容
+    getIndexLoop () {
+      const _this = this
+      getContentByTypeAndGroup(this.CONSTANT.AD.TYPE_KEY.PC_INDEX(), this.CONSTANT.AD.AD_KEY.PC_INDEX_LOOP()).then((res) => {
+        if (res.code === ERR_OK) {
+          // 将列表数据放入 vuex actions中
+          _this.swiperList = res.data
+        }
+      })
+    },
+    // 获取轮播图点击事件
+    handleLoopClick (item) {
+      this.$router.push({
+        path: item.adGroupContextVo.linkUrl
+      })
     },
     ...mapActions([
       'news',

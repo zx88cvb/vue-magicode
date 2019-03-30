@@ -3,12 +3,13 @@
     <div class="content ajax-load-con posts-default wow" v-for="(item) of news" :key="item.id">
       <div class="content-box">
         <div class="posts-default-img">
-          <a href="#" @click="selectItem(item.id)">
+          <router-link :to="`/news/${item.id}`"
+             tag="a">
             <div class="overlay"></div>
             <img
-              :src="_imgPath(item.thumbnail)"
+              v-lazy="_imgPath(item.thumbnail)"
             >
-          </a>
+          </router-link>
         </div>
         <div class="posts-default-box">
           <div class="posts-default-title" @click="selectItem(item.id)">
@@ -27,7 +28,7 @@
                   <div class="avatar">
                     <img
                       alt
-                      :src="_imgPath(item.thumbnail)"
+                      v-lazy="_imgPath(item.thumbnail)"
                       class="avatar avatar-96 photo"
                       height="96"
                       width="96"
