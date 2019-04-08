@@ -8,7 +8,6 @@ export const news = (state) => {
 }
 
 export const singleNew = (state) => {
-  console.log(123)
   if (!state.singleNew) {
     return JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) ? JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) : {}
   }

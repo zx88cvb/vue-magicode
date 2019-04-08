@@ -7,28 +7,29 @@
           <a rel="nofollow" id="cancel-comment-reply-link" href="/grace-style1/1913.html#respond" style="display: none;">取消回复</a>
         </span>
       </h3>
-      <el-form action="/" id="commentform">
+      <el-form id="commentform" ref="form" :rules="rules" :model="form">
         <el-row id="comment-author-info" class="clearfix" :gutter="20">
           <el-col :span="8">
-            <el-form-item label="昵称">
-              <el-input placeholder="昵称"></el-input>
+            <el-form-item label="昵称" prop="nickname">
+              <el-input v-model="form.nickname" placeholder="昵称"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="邮箱">
-              <el-input placeholder="邮箱"></el-input>
+            <el-form-item label="邮箱" prop="email">
+              <el-input v-model="form.email" placeholder="邮箱"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="网址">
-              <el-input placeholder="网址"></el-input>
+            <el-form-item label="网址" prop="website">
+              <el-input v-model="form.website" placeholder="网址"></el-input>
             </el-form-item>
           </el-col>
         </el-row>
         <el-row class="clearfix">
           <el-col :span="24">
-            <el-form-item>
+            <el-form-item prop="content">
               <el-input type="textarea"
+                v-model="form.content"
                :autosize="{ minRows: 6, maxRows: 12}"
                placeholder="说的什么吧…"></el-input>
             </el-form-item>
@@ -37,7 +38,7 @@
         <el-row class="form-submit">
           <el-col :span="24">
             <el-form-item>
-              <el-button class="btn-comment pull-right" type="primary">发表评论</el-button>
+              <el-button class="btn-comment pull-right" type="primary" @click="saveAdd('form')">发表评论</el-button>
             </el-form-item>
           </el-col>
         </el-row>
@@ -47,8 +48,64 @@
 </template>
 
 <script>
+import { insertBlogComment } from 'api/blog/comment'
+import { ERR_OK } from 'common/js/config'
+import { createCommentEmpty } from 'common/form/blog/comment'
 export default {
-  name: 'respond'
+  name: 'respond',
+  data () {
+    return {
+      form: {
+        id: -1,
+        pId: 0,
+        articleId: 0,
+        userId: 0,
+        nickname: null,
+        email: null,
+        website: null,
+        content: null
+      },
+      rules: {
+        articleId: [
+          {required: true, message: '文章id不能为空', trigger: 'blur'}
+        ],
+        nickname: [
+          {required: true, message: '请输入昵称', trigger: 'blur'},
+          {min: 1, max: 25, message: '长度在 1 到 25 个字符', trigger: 'blur'}
+        ],
+        excerpt: [
+          {min: 1, max: 100, message: '长度在 1 到 100 个字符', trigger: 'blur'}
+        ],
+        content: [
+          {required: true, message: '请输入内容', trigger: 'blur'},
+          {min: 1, max: 500, message: '长度在 1 到 500 个字符', trigger: 'blur'}
+        ]
+      }
+    }
+  },
+  methods: {
+    saveAdd (formName) {
+      let _this = this
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          insertBlogComment(this.form).then((res) => {
+            if (ERR_OK !== res.code) {
+              _this.$message.error(res.message)
+            } else {
+              _this.$message.success(res.message)
+              _this.form = createCommentEmpty()
+              // _this.getData()
+            }
+          }).catch(function (response) {
+            _this.$message.error(response.message)
+          })
+        } else {
+          _this.$message.error('ILLEGAL_ARGUMENT!!')
+          return false
+        }
+      })
+    }
+  }
 }
 </script>
 

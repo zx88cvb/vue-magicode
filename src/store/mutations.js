@@ -12,7 +12,7 @@ const mutations = {
   [types.SET_SINGLE_NEW] (state, singleNew) {
     try {
       localStorage.setItem(types.SET_SINGLE_NEW, JSON.stringify(singleNew))
-      state.singleNew = singleNew
+      state.singleNew = Object.assign({}, singleNew)
     } catch (e) {
       console.log(e)
     }
