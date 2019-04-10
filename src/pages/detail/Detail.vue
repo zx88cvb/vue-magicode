@@ -34,11 +34,13 @@ export default {
     MRight,
     DetailLeft
   },
-  created () {
+  activated () {
+    this.singleNew(this.id)
     this.getComment(this.id)
   },
   methods: {
     ...mapActions([
+      'singleNew',
       'getComment'
     ])
   }
