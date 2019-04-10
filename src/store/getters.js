@@ -20,3 +20,10 @@ export const randNews = (state) => {
   }
   return state.randNews
 }
+
+export const commentList = (state) => {
+  if (!state.commentList) {
+    return JSON.parse(localStorage.getItem(types.SET_COMMENT_LIST)) ? JSON.parse(localStorage.getItem(types.SET_COMMENT_LIST)) : {}
+  }
+  return state.randNews
+}

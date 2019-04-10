@@ -1,11 +1,26 @@
 <template>
   <div class="page-content">
-      <detail-content></detail-content>
+      <div class="main-content">
+        <div class="container">
+          <el-row>
+            <!-- 左侧内容 -->
+            <el-col :xs="24" :sm="16" :md="16" :span="24">
+              <detail-left></detail-left>
+            </el-col>
+            <!-- 右侧推荐 -->
+            <el-col :xs="24" :sm="8" :md="8" :span="24">
+              <m-right></m-right>
+            </el-col>
+          </el-row>
+        </div>
+      </div>
   </div>
 </template>
 
 <script>
-import DetailContent from 'pages/detail/components/Content'
+import DetailLeft from 'pages/detail/components/left/DetailLeft'
+import MRight from 'components/content/MRight'
+import { mapActions } from 'vuex'
 // import { ERR_OK } from 'common/js/config'
 // import { getBlogArticleById } from 'api/blog/article'
 export default {
@@ -16,7 +31,16 @@ export default {
     }
   },
   components: {
-    DetailContent
+    MRight,
+    DetailLeft
+  },
+  created () {
+    this.getComment(this.id)
+  },
+  methods: {
+    ...mapActions([
+      'getComment'
+    ])
   }
   // 路由导航守卫
   // beforeRouteUpdate (to, from, next) {

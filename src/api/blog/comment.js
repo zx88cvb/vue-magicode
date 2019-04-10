@@ -12,3 +12,21 @@ export function insertBlogComment (form) {
     console.log(response)
   })
 }
+
+// 评论分页查询
+export function recent (articleId, pageNum, pageSize) {
+  const url = `/blogapi/blog/comment/recent`
+
+  const data = {
+    articleId,
+    pageNum,
+    pageSize
+  }
+  return axios.get(url, {
+    params: data
+  }).then((res) => {
+    return Promise.resolve(res.data)
+  }).catch(function (response) {
+    console.log(response)
+  })
+}

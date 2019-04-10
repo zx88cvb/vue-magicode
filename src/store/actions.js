@@ -1,6 +1,7 @@
 import * as types from './mutation-types'
 import { ERR_OK } from 'common/js/config'
 import { getBlogArticleById } from 'api/blog/article'
+import { recent } from 'api/blog/comment'
 
 // 文章分页查询
 export const news = function ({commit}, {records}) {
@@ -26,4 +27,14 @@ export const saveRandNews = function ({commit}, {data}) {
   //   }
   // })
   commit(types.SET_RAND_NEWS, data)
+}
+
+// 获取留言数据
+export const getComment = function ({commit}, articleId) {
+  recent(articleId).then((res) => {
+    if (res.code === ERR_OK) {
+      // 将列表数据放入 vuex actions中
+      commit(types.SET_COMMENT_LIST, res.data)
+    }
+  })
 }

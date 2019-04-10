@@ -24,6 +24,14 @@ const mutations = {
     } catch (e) {
       console.log(e)
     }
+  },
+  [types.SET_COMMENT_LIST] (state, commentList) {
+    try {
+      localStorage.setItem(types.SET_COMMENT_LIST, JSON.stringify(commentList))
+      state.commentList = commentList
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 

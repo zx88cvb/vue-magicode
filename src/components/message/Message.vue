@@ -3,32 +3,32 @@
     <div class="comments-box">
       <h3 class="comments-title">
         全部评论:
-        <span class="comments-num">3条</span>
+        <span class="comments-num">{{commentList.total}}条</span>
       </h3>
       <ul class="commentlist">
-        <li class="comment even depth-1">
+        <li class="comment even depth-1" v-for="item of commentList.records" :key="item.id">
           <div class="comment-1">
             <div class="comment-avatar">
               <img alt="" src="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=96&amp;d=mm&amp;r=g" data-original="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=96&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=192&amp;d=mm&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96" style="display: inline;">
             </div>
             <div class="comment-body">
               <div class="comment_author">
-                <span class="name">Angel</span>
-                <em>2019-1-9 22:42:04</em>
+                <span class="name">{{item.nickname}}</span>
+                <em>{{item.createTime}}</em>
               </div>
               <div class="comment_text">
-                <p>这个展览将一直持续到 11 月 4 日，如果你在伦敦的话，不妨可以去看看。而《六十年代英国地下媒体》一书由英国出版公司 Rokect88 出版，预计于 10 月发售。</p>
+                <p>{{item.content}}</p>
               </div>
               <div class="comment_reply">
-                <span>
-                  <a href="#" title="回复">回复</a>
+                <span @click="handleReplyClick">
+                  回复
                 </span>
               </div>
             </div>
           </div>
-          <respond></respond>
+          <respond v-if="isRespond"></respond>
         </li>
-        <li class="comment odd alt depth-1"></li>
+        <!-- <li class="comment odd alt depth-1"></li> -->
       </ul>
     </div>
     <respond></respond>
@@ -36,11 +36,31 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Respond from 'components/message/Respond'
 export default {
   name: 'message',
+  data () {
+    return {
+      isRespond: false
+    }
+  },
   components: {
     Respond
+  },
+  computed: {
+    ...mapGetters([
+      'commentList'
+    ])
+    // singleNew () {
+    //   return this.$store.getters.singleNew
+    // }
+  },
+  methods: {
+    // 点击回复按钮
+    handleReplyClick () {
+      this.isRespond = !this.isRespond
+    }
   }
 }
 </script>
@@ -110,7 +130,7 @@ export default {
               margin: 0
               font-size: 12px
               color: #757e91
-              a
+              span
                 color: #48494d
                 text-decoration: none
                 -webkit-transition: all .3s ease

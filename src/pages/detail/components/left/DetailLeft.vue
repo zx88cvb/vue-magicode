@@ -94,10 +94,10 @@ export default {
     // singleNew () {
     //   return this.$store.getters.singleNew
     // }
-  },
-  created () {
-    this.singleNew()
   }
+  // created () {
+  //   this.singleNew()
+  // }
 }
 </script>
 
@@ -131,6 +131,10 @@ export default {
             -webkit-border-radius: 50%
             border: 1px solid rgba(216, 216, 216, 0.81)
             margin-right: 10px
+    .post-content >>> p
+        margin-bottom: 22px
+        line-height: 2.4
+        font-size: 16px
     .post-options
       .btn-likes
         width: 130px
