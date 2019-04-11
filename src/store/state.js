@@ -1,7 +1,7 @@
 const state = {
   news: [],
-  singleNew: null,
-  randNews: null,
+  singleNew: {},
+  randNews: [],
   commentList: []
 }
 

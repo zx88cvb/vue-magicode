@@ -9,7 +9,7 @@
             </router-link>
             <span class="sep">></span>
             <span class="current">
-              <router-link :to="'/'">{{singleNew.blogCategoryVo.categoryName}}</router-link>
+              <router-link :to="'/'" v-if="getSingleNew.blogCategoryVo">{{getSingleNew.blogCategoryVo.categoryName}}</router-link>
             </span>
             <span class="sep">></span>
             <span class="current">
@@ -17,7 +17,7 @@
             </span>
           </span>
         </div>
-        <h1 class="title">{{singleNew.title}}</h1>
+        <h1 class="title">{{getSingleNew.title}}</h1>
         <div class="post_icon">
           <span class="postauthor">
             <img
@@ -29,38 +29,38 @@
                 height="96"
                 width="96"
               >
-            <a href="#" target="_blank">{{singleNew.author}}</a>
+            <a href="#" target="_blank">{{getSingleNew.author}}</a>
           </span>
           <span class="postcat">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-category"></use>
             </svg>
-            <a href="#">{{singleNew.blogCategoryVo.categoryName}}</a>
+            <a href="#" v-if="getSingleNew.blogCategoryVo">{{getSingleNew.blogCategoryVo.categoryName}}</a>
           </span>
           <span class="postclock">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-time"></use>
             </svg>
-            {{singleNew.postTime}}
+            {{getSingleNew.postTime}}
           </span>
           <span class="posteye">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-eye"></use>
             </svg>
-            {{singleNew.browseCount}}
+            {{getSingleNew.browseCount}}
           </span>
           <span class="postcomment">
-            {{singleNew.commentCount}}
+            {{getSingleNew.commentCount}}
           </span>
           <span class="postlike">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-like"></use>
             </svg>
-            {{singleNew.pollCount}}
+            {{getSingleNew.pollCount}}
           </span>
         </div>
       </div>
-      <div class="post-content" v-html="singleNew.content">
+      <div class="post-content" v-html="getSingleNew.content">
       </div>
       <div class="clearfix"></div>
       <div class="post-options">
@@ -71,7 +71,7 @@
             </svg>
             like
           </span>
-          <span class="count num">({{singleNew.commentCount}})</span>
+          <span class="count num">({{getSingleNew.commentCount}})</span>
         </a>
       </div>
     </div>
@@ -89,7 +89,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'singleNew'
+      'getSingleNew'
     ])
     // singleNew () {
     //   return this.$store.getters.singleNew
