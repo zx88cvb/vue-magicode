@@ -27,6 +27,29 @@
             </div>
           </div>
           <respond v-if="isRespond"></respond>
+          <ul class="children" v-for="child of item.blogCommentList" :key="child.id">
+            <li class="comment byuser">
+              <div class="comment-1">
+                <div class="comment-avatar">
+                  <img alt="" src="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=96&amp;d=mm&amp;r=g" data-original="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=96&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=192&amp;d=mm&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96" style="display: inline;">
+                </div>
+                <div class="comment-body">
+                  <div class="comment_author">
+                    <span class="name">{{child.nickname}}</span>
+                    <em>{{child.createTime}}</em>
+                  </div>
+                  <div class="comment_text">
+                    <p>{{child.content}}</p>
+                  </div>
+                  <div class="comment_reply">
+                    <span @click="handleReplyClick">
+                      回复
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
         </li>
         <!-- <li class="comment odd alt depth-1"></li> -->
       </ul>
@@ -144,4 +167,33 @@ export default {
             background: #f5f6f9
             margin: 10px 0
             box-shadow: none
+          ul.children
+            padding: 10px 0 0 0
+            li
+              margin-left: 0
+              padding: 12px
+              border-bottom-width: 0
+              border: 1px solid #E4E4E4
+              border-radius: 2px
+              background-color: #fbfbfb
+              margin-bottom: 10px
+              margin-top: 0
+              .comment-avatar
+                position: relative
+                left: initial
+                float: left
+                .avatar
+                  width: 40px
+                  height: 40px
+              .comment-body
+                border-bottom-width: 0
+                margin: 0 0 0 55px
+                padding: 0 0 10px
+                position: relative
+                .comment-text
+                  padding: 10px 0 0 0
+                .comment_reply
+                  position: absolute
+                  right: 0
+                  top: 0
 </style>

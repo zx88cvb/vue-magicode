@@ -11,7 +11,7 @@
             :key="item.id"
             :class="[ index === 0 ? 'one' : 'others']"
             >
-            <router-link :to="`/news/${item.id}`"
+            <router-link :to="{name: 'detail', params: { id: item.id}}"
              tag="a"
              v-if="index === 0">
               <div class="overlay"></div>
@@ -29,7 +29,7 @@
 
             <span v-else>
               <div class="image">
-                <router-link :to="`/news/${item.id}`" tag="a">
+                <router-link :to="{name: 'detail', params: { id: item.id}}" tag="a">
                   <img class="lazy thumbnail"
                   height="75"
                   width="100"

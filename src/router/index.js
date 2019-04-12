@@ -32,6 +32,7 @@ export default new Router({
       component: Home
     },
     {
+      name: 'detail',
       path: '/news/:id',
       component: NewsDetail,
       props: true
