@@ -20,7 +20,11 @@ export default {
   },
   data () {
     return {
-      swiperList: []
+      swiperList: [],
+      page: {
+        pageNum: 1,
+        pageSize: 10
+      }
     }
   },
   created () {
@@ -36,8 +40,13 @@ export default {
   },
   methods: {
     _getBlogArticlePage () {
+      const params = {
+        categoryId: this.categoryId,
+        pageNum: this.page.pageNum,
+        pageSize: this.page.pageSize
+      }
       let _this = this
-      getBlogArticlePage().then((res) => {
+      getBlogArticlePage(params).then((res) => {
         if (res.code === ERR_OK) {
           // 将列表数据放入 vuex actions中
           _this.news(res.data)

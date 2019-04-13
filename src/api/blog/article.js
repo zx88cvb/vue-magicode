@@ -1,13 +1,10 @@
 import axios from 'axios'
 
 /* 分页条件查询 */
-export function getBlogArticlePage (pageNum, pageSize) {
+export function getBlogArticlePage (params) {
   const url = '/blogapi/blog/article/recent'
 
-  const data = {
-    pageNum,
-    pageSize
-  }
+  const data = params
   return axios.get(url, {
     params: data
   }).then((res) => {
