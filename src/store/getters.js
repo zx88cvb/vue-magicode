@@ -27,3 +27,10 @@ export const commentList = (state) => {
   }
   return state.commentList
 }
+
+export const tagList = (state) => {
+  if (!state.tagList.length) {
+    return JSON.parse(localStorage.getItem(types.SET_TAG_LIST)) ? JSON.parse(localStorage.getItem(types.SET_TAG_LIST)) : {}
+  }
+  return state.tagList
+}

@@ -30,6 +30,9 @@ export default {
     this._getRand()
 
     this.getIndexLoop()
+
+    // 获取标签云
+    this.setTagList()
   },
   methods: {
     _getBlogArticlePage () {
@@ -69,7 +72,8 @@ export default {
     },
     ...mapActions([
       'news',
-      'saveRandNews'
+      'saveRandNews',
+      'setTagList'
     ])
   }
 }

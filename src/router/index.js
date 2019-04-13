@@ -38,8 +38,15 @@ export default new Router({
       props: true
     },
     {
-      path: '/category/:id',
-      component: Category
+      path: '/category/:categoryId',
+      component: Category,
+      props: true
+    },
+    {
+      name: 'tagList',
+      path: '/tag/:tagId',
+      component: Category,
+      props: true
     },
     {
       path: '/links',

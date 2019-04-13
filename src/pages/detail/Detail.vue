@@ -43,6 +43,12 @@ export default {
       'singleNew',
       'getComment'
     ])
+  },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    '$route' () {
+      this.singleNew(this.id)
+    }
   }
   // 路由导航守卫
   // beforeRouteUpdate (to, from, next) {

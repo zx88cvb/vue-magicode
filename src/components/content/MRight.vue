@@ -147,7 +147,9 @@
         </h3>
         <div class="tags">
           <div class="tag_items">
-            <a href="#">Spring</a>
+            <router-link :to="`/tag/${item.id}`" v-for="item of tagList" :key="item.id" tag="span">
+              {{item.tagName}}
+            </router-link>
           </div>
         </div>
       </div>
@@ -160,7 +162,8 @@ export default {
   name: 'MRight',
   computed: {
     ...mapGetters([
-      'randNews'
+      'randNews',
+      'tagList'
     ])
   },
   methods: {
@@ -261,12 +264,13 @@ export default {
               position: absolute
               bottom: 0
       .tag_items
-        a
+        span
           display: inline-block
           font-size: 12px
           line-height: 1
           padding: 6px 12px 4px 12px
           margin: 0 8px 8px 0
+          cursor: pointer
           border: 1px solid #e0e0e0
           border-radius: 2px
           color: rgba(0, 0, 0, .44)

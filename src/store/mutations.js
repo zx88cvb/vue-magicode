@@ -32,6 +32,14 @@ const mutations = {
     } catch (e) {
       console.log(e)
     }
+  },
+  [types.SET_TAG_LIST] (state, tagList) {
+    try {
+      localStorage.setItem(types.SET_TAG_LIST, JSON.stringify(tagList))
+      state.tagList = tagList
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 
