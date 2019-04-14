@@ -27,7 +27,7 @@
             </div>
           </div>
           <respond v-if="isRespond"></respond>
-          <ul class="children" v-for="child of item.blogCommentList" :key="child.id">
+          <!-- <ul class="children" v-for="child of item.blogCommentList" :key="child.id">
             <li class="comment byuser">
               <div class="comment-1">
                 <div class="comment-avatar">
@@ -48,7 +48,11 @@
                   </div>
                 </div>
               </div>
+              <tree-item :child="child"></tree-item>
             </li>
+          </ul> -->
+          <ul class="children" v-for="child of item.blogCommentList" :key="child.id">
+            <tree-item :child="child"></tree-item>
           </ul>
         </li>
         <!-- <li class="comment odd alt depth-1"></li> -->
@@ -61,6 +65,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import Respond from 'components/message/Respond'
+import TreeItem from 'components/message/TreeItem'
 export default {
   name: 'message',
   data () {
@@ -69,7 +74,8 @@ export default {
     }
   },
   components: {
-    Respond
+    Respond,
+    TreeItem
   },
   computed: {
     ...mapGetters([
@@ -115,7 +121,7 @@ export default {
       .commentlist
         padding: 0 0 20px 0
         clear: both
-        li
+      >>> li
           clear: both
           margin: 15px 0
           border-bottom: 1px solid #eceef1
