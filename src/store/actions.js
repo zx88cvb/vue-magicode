@@ -31,8 +31,8 @@ export const saveRandNews = function ({commit}, {data}) {
 }
 
 // 获取留言数据
-export const getComment = function ({commit}, articleId) {
-  recent(articleId).then((res) => {
+export const getComment = function ({commit}, form) {
+  recent(form).then((res) => {
     if (res.code === ERR_OK) {
       // 将列表数据放入 vuex actions中
       commit(types.SET_COMMENT_LIST, res.data)

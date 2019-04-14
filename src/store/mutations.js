@@ -13,6 +13,7 @@ const mutations = {
     try {
       localStorage.setItem(types.SET_SINGLE_NEW, JSON.stringify(singleNew))
       state.singleNew = Object.assign({}, singleNew)
+      state.newId = singleNew.id
     } catch (e) {
       console.log(e)
     }

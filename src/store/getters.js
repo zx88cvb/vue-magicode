@@ -34,3 +34,7 @@ export const tagList = (state) => {
   }
   return state.tagList
 }
+
+export const getNewId = (state) => {
+  return state.newId
+}

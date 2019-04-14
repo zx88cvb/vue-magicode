@@ -20,13 +20,16 @@
                 <p>{{item.content}}</p>
               </div>
               <div class="comment_reply">
-                <span @click="handleReplyClick">
+                <span @click="handleReplyClick(item.pid)">
                   回复
                 </span>
               </div>
             </div>
           </div>
-          <respond v-if="isRespond"></respond>
+          <respond v-if="isRespond"
+           :pId='pId'
+          :articleId='item.articleId'
+          @reloadComment='reloadComment'></respond>
           <!-- <ul class="children" v-for="child of item.blogCommentList" :key="child.id">
             <li class="comment byuser">
               <div class="comment-1">
@@ -52,25 +55,40 @@
             </li>
           </ul> -->
           <ul class="children" v-for="child of item.blogCommentList" :key="child.id">
-            <tree-item :child="child"></tree-item>
+            <tree-item :child="child" @handleReplyClick="handleReplyClick"></tree-item>
           </ul>
         </li>
         <!-- <li class="comment odd alt depth-1"></li> -->
       </ul>
+
+      <div class="block page">
+        <el-pagination
+          @current-change="handleCurrentChange"
+          layout="prev, pager, next"
+          :total='commentList.total'>
+        </el-pagination>
+      </div>
     </div>
-    <respond></respond>
+    <respond :articleId='getNewId'
+     @reloadComment='reloadComment'>
+    </respond>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Respond from 'components/message/Respond'
 import TreeItem from 'components/message/TreeItem'
 export default {
   name: 'message',
   data () {
     return {
-      isRespond: false
+      isRespond: false,
+      pId: 0,
+      page: {
+        pageNum: 1,
+        pageSize: 10
+      }
     }
   },
   components: {
@@ -79,17 +97,40 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'commentList'
+      'commentList',
+      'getNewId'
     ])
     // singleNew () {
     //   return this.$store.getters.singleNew
     // }
   },
   methods: {
+    // 点击页数
+    handleCurrentChange (val) {
+      this.page.pageNum = val
+      const form = {
+        articleId: this.getNewId,
+        pageNum: this.page.pageNum,
+        pageSize: this.page.pageSize
+      }
+      this.getComment(form)
+    },
     // 点击回复按钮
-    handleReplyClick () {
-      this.isRespond = !this.isRespond
-    }
+    handleReplyClick (pId) {
+      this.pId = pId
+      // this.isRespond = !this.isRespond
+    },
+    reloadComment (articleId) {
+      const form = {
+        articleId,
+        pageNum: this.page.pageNum,
+        pageSize: this.page.pageSize
+      }
+      this.getComment(form)
+    },
+    ...mapActions([
+      'getComment'
+    ])
   }
 }
 </script>
@@ -121,7 +162,7 @@ export default {
       .commentlist
         padding: 0 0 20px 0
         clear: both
-      >>> li
+        li
           clear: both
           margin: 15px 0
           border-bottom: 1px solid #eceef1
@@ -168,7 +209,7 @@ export default {
                 -o-transition: all .3s ease
                 transition: all .3s ease
                 cursor: pointer
-          >>> .respond-box
+          .respond-box
             padding: 15px
             background: #f5f6f9
             margin: 10px 0
@@ -202,4 +243,6 @@ export default {
                   position: absolute
                   right: 0
                   top: 0
+    .page
+      text-align: right
 </style>

@@ -14,14 +14,10 @@ export function insertBlogComment (form) {
 }
 
 // 评论分页查询
-export function recent (articleId, pageNum, pageSize) {
+export function recent (form) {
   const url = `/blogapi/blog/comment/recent`
 
-  const data = {
-    articleId,
-    pageNum,
-    pageSize
-  }
+  const data = form
   return axios.get(url, {
     params: data
   }).then((res) => {

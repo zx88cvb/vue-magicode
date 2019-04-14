@@ -4,7 +4,7 @@
       <h3 class="comments-title">
         发表评论
         <span id="cancel-comment-reply">
-          <a rel="nofollow" id="cancel-comment-reply-link" href="/grace-style1/1913.html#respond" style="display: none;">取消回复</a>
+          <a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display: none;">取消回复</a>
         </span>
       </h3>
       <el-form id="commentform" ref="form" :rules="rules" :model="form">
@@ -53,6 +53,14 @@ import { ERR_OK } from 'common/js/config'
 import { createCommentEmpty } from 'common/form/blog/comment'
 export default {
   name: 'respond',
+  props: {
+    pId: {
+      default: 0
+    },
+    articleId: {
+      required: true
+    }
+  },
   data () {
     return {
       form: {
@@ -85,6 +93,8 @@ export default {
   },
   methods: {
     saveAdd (formName) {
+      this.form.pId = this.pId
+      this.form.articleId = this.articleId
       let _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -94,7 +104,7 @@ export default {
             } else {
               _this.$message.success(res.message)
               _this.form = createCommentEmpty()
-              // _this.getData()
+              _this.$emit('reloadComment', _this.articleId)
             }
           }).catch(function (response) {
             _this.$message.error(response.message)

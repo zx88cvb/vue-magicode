@@ -36,7 +36,7 @@ export default {
   },
   activated () {
     this.singleNew(this.id)
-    this.getComment(this.id)
+    this.getComment({articleId: this.id})
   },
   methods: {
     ...mapActions([
@@ -48,6 +48,7 @@ export default {
     // 如果路由有变化，会再次执行该方法
     '$route' () {
       this.singleNew(this.id)
+      this.getComment({articleId: this.id})
     }
   }
   // 路由导航守卫
