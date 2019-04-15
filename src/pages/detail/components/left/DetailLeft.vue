@@ -64,18 +64,21 @@
       </div>
       <div class="clearfix"></div>
       <div class="post-options">
-        <a href="#" title="like" class="btn-likes like current">
+        <span title="like"
+         class="btn-likes like"
+         :class="{current: isLike}"
+         @click="handleLikeClick(getSingleNew.id)">
           <span class="s-like">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-like"></use>
             </svg>
             like
           </span>
-          <span class="count num">({{getSingleNew.commentCount}})</span>
-        </a>
+          <span class="count num">({{getSingleNew.pollCount}})</span>
+        </span>
       </div>
     </div>
-    <message></message>
+    <message :commentCount='getSingleNew.commentCount'></message>
   </div>
 </template>
 
@@ -84,6 +87,11 @@ import { mapGetters } from 'vuex'
 import Message from 'components/message/Message'
 export default {
   name: 'detailLeft',
+  props: {
+    isLike: {
+      default: false
+    }
+  },
   components: {
     Message
   },
@@ -91,13 +99,12 @@ export default {
     ...mapGetters([
       'getSingleNew'
     ])
-    // singleNew () {
-    //   return this.$store.getters.singleNew
-    // }
+  },
+  methods: {
+    handleLikeClick (articleId) {
+      this.$emit('handleLikeClick', articleId)
+    }
   }
-  // created () {
-  //   this.singleNew()
-  // }
 }
 </script>
 
@@ -145,6 +152,7 @@ export default {
         background: #fff
         display: inline-block
         text-align: center
+        cursor: pointer
         margin: 0 2px
         color: #F74840
         font-size: 14px
