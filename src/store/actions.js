@@ -49,3 +49,8 @@ export const setTagList = function ({commit}) {
     }
   })
 }
+
+// 点击喜欢
+export const setArticleLike = function ({commit}) {
+  commit(types.SET_ARTICLE_LIKE)
+}

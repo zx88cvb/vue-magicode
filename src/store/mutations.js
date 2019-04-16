@@ -41,6 +41,13 @@ const mutations = {
     } catch (e) {
       console.log(e)
     }
+  },
+  [types.SET_ARTICLE_LIKE] (state) {
+    try {
+      state.singleNew.pollCount = state.singleNew.pollCount + 1
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 

@@ -52,6 +52,7 @@ export default {
     this.getLike(this.id)
   },
   methods: {
+    // 通过localstorage 判断是否点赞
     getLike (id) {
       this.isLike = parseInt(localStorage.getItem(this.CONSTANT.BLOG.LIKE.ARTICLE_LIKE(id))) === parseInt(id)
     },
@@ -68,15 +69,20 @@ export default {
             _this.form = createPollEmpty()
             localStorage.setItem(this.CONSTANT.BLOG.LIKE.ARTICLE_LIKE(articleId), articleId)
             _this.isLike = true
+            // 通过vuex 改变state 中 点赞数字
+            _this.setArticleLike()
           }
         }).catch(function (response) {
           _this.$message.error(response.message)
         })
+      } else {
+        this.$message.info('您已经点过赞啦~')
       }
     },
     ...mapActions([
       'singleNew',
-      'getComment'
+      'getComment',
+      'setArticleLike'
     ])
   },
   watch: {
