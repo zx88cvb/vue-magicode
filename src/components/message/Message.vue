@@ -20,13 +20,13 @@
                 <p>{{item.content}}</p>
               </div>
               <div class="comment_reply">
-                <span @click="handleReplyClick(item.pid)">
+                <span @click="handleReplyClick(item.id, item.pid)">
                   回复
                 </span>
               </div>
             </div>
           </div>
-          <respond v-if="isRespond"
+          <respond v-if="item.id === showKey"
            :pId='pId'
           :articleId='item.articleId'
           @reloadComment='reloadComment'></respond>
@@ -55,7 +55,10 @@
             </li>
           </ul> -->
           <ul class="children" v-for="child of item.blogCommentList" :key="child.id">
-            <tree-item :child="child" @handleReplyClick="handleReplyClick"></tree-item>
+            <tree-item :child="child"
+             @handleReplyClick="handleReplyClick"
+             @reloadComment='reloadComment'>
+             </tree-item>
           </ul>
         </li>
         <!-- <li class="comment odd alt depth-1"></li> -->
@@ -88,8 +91,9 @@ export default {
   },
   data () {
     return {
-      isRespond: false,
       pId: 0,
+      // for循环key值 用于显示隐藏对应回复
+      showKey: 0,
       page: {
         pageNum: 1,
         pageSize: 10
@@ -121,8 +125,9 @@ export default {
       this.getComment(form)
     },
     // 点击回复按钮
-    handleReplyClick (pId) {
-      this.pId = pId
+    handleReplyClick (id) {
+      this.showKey = id
+      this.pId = id
       // this.isRespond = !this.isRespond
     },
     reloadComment (articleId) {

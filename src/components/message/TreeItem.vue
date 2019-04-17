@@ -14,22 +14,28 @@
             <p>{{child.content}}</p>
           </div>
           <div class="comment_reply">
-            <span @click="handleReplyClick(child.pid)">
+            <span @click="handleReplyClick(child.id)">
               回复
             </span>
           </div>
         </div>
       </div>
+      <respond v-if="child.id === showKey"
+           :pId='pId'
+          :articleId='child.articleId'
+          @reloadComment='reloadComment'></respond>
       <tree-item :child="subitem"
         v-for="subitem in child.blogCommentList"
         :key="subitem.id"
-        @handleReplyClick="handleReplyClick">
+        @handleReplyClick="handleReplyClick"
+        @reloadComment='reloadComment'>
         </tree-item>
     </li>
   </ul>
 </template>
 
 <script>
+import Respond from 'components/message/Respond'
 export default {
   name: 'treeItem',
   props: {
@@ -37,9 +43,23 @@ export default {
       type: Object
     }
   },
+  data () {
+    return {
+      pId: 0,
+      showKey: 0
+    }
+  },
+  components: {
+    Respond
+  },
   methods: {
-    handleReplyClick (pid) {
-      this.$emit('handleReplyClick', pid)
+    handleReplyClick (id) {
+      this.showKey = id
+      this.pId = id
+      this.$emit('handleReplyClick', id)
+    },
+    reloadComment (articleId) {
+      this.$emit('reloadComment', articleId)
     }
   }
 }
