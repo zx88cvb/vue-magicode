@@ -30,7 +30,7 @@ export default {
   components: {
     CategoryContent
   },
-  created () {
+  activated () {
     // 获取新闻数据
     this._getBlogArticlePage()
   },
@@ -53,13 +53,13 @@ export default {
     ...mapActions([
       'news'
     ])
-  },
-  watch: {
-    // 如果路由有变化，会再次执行该方法
-    '$route' () {
-      this._getBlogArticlePage()
-    }
   }
+  // watch: {
+  //   // 如果路由有变化，会再次执行该方法
+  //   '$route' () {
+  //     this._getBlogArticlePage()
+  //   }
+  // }
 }
 </script>
 

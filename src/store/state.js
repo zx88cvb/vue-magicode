@@ -10,7 +10,9 @@ const state = {
   // 标签集合
   tagList: [],
   // 新闻id
-  newId: null
+  newId: null,
+  // 根据评论个数获取到新闻
+  commentNews: []
 }
 
 export default state

@@ -1,6 +1,10 @@
 import * as types from './mutation-types'
 import { ERR_OK } from 'common/js/config'
-import { getBlogArticleById } from 'api/blog/article'
+import {
+  getBlogArticleById,
+  selectNewsComment,
+  selectNewsRandThreeComment
+} from 'api/blog/article'
 import { recent } from 'api/blog/comment'
 import { getTagAll } from 'api/blog/tag'
 
@@ -53,4 +57,26 @@ export const setTagList = function ({commit}) {
 // 点击喜欢
 export const setArticleLike = function ({commit}) {
   commit(types.SET_ARTICLE_LIKE)
+}
+
+// 根据评论个数获取新闻
+export const setArticleComment = function ({commit}) {
+  selectNewsComment().then((res) => {
+    if (res.code === ERR_OK) {
+      // 将列表数据放入 vuex actions中
+      commit(types.SET_ARTICLE_COMMENT_COUNT, res.data)
+    }
+  })
+}
+
+// 根据评论个数获取新闻和随机文章 标签云(组合)
+export const setArticleRandComment = function ({commit}) {
+  selectNewsRandThreeComment().then((res) => {
+    if (res.code === ERR_OK) {
+      // 将列表数据放入 vuex actions中
+      commit(types.SET_RAND_NEWS, res.data.randNews)
+      commit(types.SET_ARTICLE_COMMENT_COUNT, res.data.commentNews)
+      commit(types.SET_TAG_LIST, res.data.tagList)
+    }
+  })
 }

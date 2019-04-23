@@ -10,7 +10,7 @@ import { mapActions } from 'vuex'
 import HomeSwiper from 'pages/home/components/Swiper'
 import MainContent from 'pages/home/components/Content'
 import { ERR_OK } from 'common/js/config'
-import { getBlogArticlePage, getRand } from 'api/blog/article'
+import { getBlogArticlePage } from 'api/blog/article'
 import { getContentByTypeAndGroup } from 'api/ad/content'
 export default {
   name: 'home',
@@ -29,14 +29,23 @@ export default {
   },
   created () {
     // 获取新闻数据
-    this._getBlogArticlePage()
+    // this._getBlogArticlePage()
 
-    this._getRand()
+    // this._getRand()
 
     this.getIndexLoop()
 
     // 获取标签云
-    this.setTagList()
+    // this.setTagList()
+
+    // 组合 评论新闻和随机文章 标签云
+    this.setArticleRandComment()
+
+    // 根据评论获取新闻
+    // this.setArticleComment()
+  },
+  activated () {
+    this._getBlogArticlePage()
   },
   methods: {
     _getBlogArticlePage () {
@@ -53,15 +62,15 @@ export default {
         }
       })
     },
-    _getRand () {
-      getRand().then((res) => {
-        if (res.code === ERR_OK) {
-          // 将列表数据放入 vuex actions中
-          this.saveRandNews(res)
-        }
-      })
-      // this.saveRandNews('{a: 1, b: 2}')
-    },
+    // _getRand () {
+    //   getRand().then((res) => {
+    //     if (res.code === ERR_OK) {
+    //       // 将列表数据放入 vuex actions中
+    //       this.saveRandNews(res)
+    //     }
+    //   })
+    //   // this.saveRandNews('{a: 1, b: 2}')
+    // },
     // 获取轮播图
     // 查询广告内容
     getIndexLoop () {
@@ -81,8 +90,10 @@ export default {
     },
     ...mapActions([
       'news',
-      'saveRandNews',
-      'setTagList'
+      // 'saveRandNews',
+      'setArticleRandComment'
+      // 'setTagList'
+      // 'setArticleComment'
     ])
   }
 }

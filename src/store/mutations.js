@@ -48,6 +48,14 @@ const mutations = {
     } catch (e) {
       console.log(e)
     }
+  },
+  [types.SET_ARTICLE_COMMENT_COUNT] (state, commentNews) {
+    try {
+      localStorage.setItem(types.SET_ARTICLE_COMMENT_COUNT, JSON.stringify(commentNews))
+      state.commentNews = commentNews
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 

@@ -35,6 +35,13 @@ export const tagList = (state) => {
   return state.tagList
 }
 
+export const commentNews = (state) => {
+  if (!state.commentNews.length) {
+    return JSON.parse(localStorage.getItem(types.SET_ARTICLE_COMMENT_COUNT)) ? JSON.parse(localStorage.getItem(types.SET_ARTICLE_COMMENT_COUNT)) : {}
+  }
+  return state.commentNews
+}
+
 export const getNewId = (state) => {
   return state.newId
 }

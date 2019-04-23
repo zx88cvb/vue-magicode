@@ -22,9 +22,7 @@
           <span class="postauthor">
             <img
                 alt
-                src="https://secure.gravatar.com/avatar/afa39accf8700cbbe7b13e1d01aa5b17?s=96&amp;d=mm&amp;r=g"
-                data-original="https://secure.gravatar.com/avatar/afa39accf8700cbbe7b13e1d01aa5b17?s=96&amp;d=mm&amp;r=g"
-                srcset="https://secure.gravatar.com/avatar/afa39accf8700cbbe7b13e1d01aa5b17?s=192&amp;d=mm&amp;r=g 2x"
+                v-lazy='$imgPath(getSingleNew.thumbnail)'
                 class="avatar avatar-96 photo"
                 height="96"
                 width="96"
@@ -50,6 +48,9 @@
             {{getSingleNew.browseCount}}
           </span>
           <span class="postcomment">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-weibiaoti103"></use>
+            </svg>
             {{getSingleNew.commentCount}}
           </span>
           <span class="postlike">
