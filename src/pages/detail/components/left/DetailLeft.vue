@@ -27,13 +27,13 @@
                 height="96"
                 width="96"
               >
-            <a href="#" target="_blank">{{getSingleNew.author}}</a>
+            <span target="_blank">{{getSingleNew.author}}</span>
           </span>
           <span class="postcat">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-category"></use>
             </svg>
-            <a href="#" v-if="getSingleNew.blogCategoryVo">{{getSingleNew.blogCategoryVo.categoryName}}</a>
+            <span v-if="getSingleNew.blogCategoryVo">{{getSingleNew.blogCategoryVo.categoryName}}</span>
           </span>
           <span class="postclock">
             <svg class="icon" aria-hidden="true">

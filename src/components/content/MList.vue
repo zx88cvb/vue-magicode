@@ -15,7 +15,7 @@
           <div class="posts-default-box">
             <div class="posts-default-title" @click="selectItem(item.id)">
               <h2>
-                <a href="#">{{item.title}}</a>
+                <span>{{item.title}}</span>
               </h2>
             </div>
             <div class="posts-default-content">
@@ -36,13 +36,13 @@
                         style="display: block;"
                       >
                     </div>
-                    <a href="#" target="_blank">{{item.author}}</a>
+                    <span target="_blank">{{item.author}}</span>
                   </li>
                   <li class="ico-cat">
                     <svg class="icon" aria-hidden="true">
                       <use xlink:href="#icon-category"></use>
                     </svg>
-                    <a href="#">{{item.blogCategoryVo.categoryName}}</a>
+                    <span href="#">{{item.blogCategoryVo.categoryName}}</span>
                   </li>
                   <li class="ico-time">
                     <svg class="icon" aria-hidden="true">
@@ -113,7 +113,7 @@ export default {
               position: relative
               font-size: 20px
               font-weight: 600
-              a
+              span
                 color: #48494d
                 cursor: pointer
           .posts-default-content
