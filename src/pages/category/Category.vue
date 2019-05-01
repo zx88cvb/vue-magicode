@@ -1,14 +1,12 @@
 <template>
   <div class="page-content">
-    <category-content></category-content>
+    <category-content @handleMoreClick="handleMoreClick"></category-content>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import CategoryContent from 'pages/category/components/Content'
-import { getBlogArticlePage } from 'api/blog/article'
-import { ERR_OK } from 'common/js/config'
 export default {
   name: 'category',
   props: {
@@ -21,7 +19,10 @@ export default {
   },
   data () {
     return {
-      page: {
+      params: {
+        isMore: false,
+        categoryId: null,
+        tagId: null,
         pageNum: 1,
         pageSize: 10
       }
@@ -36,30 +37,28 @@ export default {
   },
   methods: {
     _getBlogArticlePage () {
-      const params = {
-        categoryId: this.categoryId,
-        tagId: this.tagId,
-        pageNum: this.page.pageNum,
-        pageSize: this.page.pageSize
-      }
-      let _this = this
-      getBlogArticlePage(params).then((res) => {
-        if (res.code === ERR_OK) {
-          // 将列表数据放入 vuex actions中
-          _this.news(res.data)
-        }
-      })
+      this.params.isMore = false
+      this.params.pageNum = 1
+      this.params.categoryId = this.categoryId
+      this.params.tagId = this.tagId
+      this.news(this.params)
+    },
+    // 加载更多
+    handleMoreClick (current) {
+      this.params.pageNum = current + 1
+      this.params.isMore = true
+      this.news(this.params)
     },
     ...mapActions([
       'news'
     ])
+  },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    '$route' () {
+      this._getBlogArticlePage()
+    }
   }
-  // watch: {
-  //   // 如果路由有变化，会再次执行该方法
-  //   '$route' () {
-  //     this._getBlogArticlePage()
-  //   }
-  // }
 }
 </script>
 

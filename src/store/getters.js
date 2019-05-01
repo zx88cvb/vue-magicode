@@ -1,12 +1,9 @@
 import * as types from './mutation-types'
 
-export const news = (state) => {
-  if (!state.news.length) {
-    return JSON.parse(localStorage.getItem(types.SET_NEWS)) ? JSON.parse(localStorage.getItem(types.SET_NEWS)) : {}
-  }
-  return state.news
-}
+// 文章列表
+export const news = (state) => state.news
 
+// 单个文章
 export const getSingleNew = (state) => {
   if (!state.singleNew) {
     return JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) ? JSON.parse(localStorage.getItem(types.SET_SINGLE_NEW)) : {}
@@ -14,6 +11,7 @@ export const getSingleNew = (state) => {
   return state.singleNew
 }
 
+// 随机文章
 export const randNews = (state) => {
   if (!state.randNews.length) {
     return JSON.parse(localStorage.getItem(types.SET_RAND_NEWS)) ? JSON.parse(localStorage.getItem(types.SET_RAND_NEWS)) : {}
@@ -21,6 +19,7 @@ export const randNews = (state) => {
   return state.randNews
 }
 
+// 评论
 export const commentList = (state) => {
   if (!state.commentList.length) {
     return JSON.parse(localStorage.getItem(types.SET_COMMENT_LIST)) ? JSON.parse(localStorage.getItem(types.SET_COMMENT_LIST)) : {}
@@ -28,6 +27,7 @@ export const commentList = (state) => {
   return state.commentList
 }
 
+// 标签云
 export const tagList = (state) => {
   if (!state.tagList.length) {
     return JSON.parse(localStorage.getItem(types.SET_TAG_LIST)) ? JSON.parse(localStorage.getItem(types.SET_TAG_LIST)) : {}
@@ -35,6 +35,7 @@ export const tagList = (state) => {
   return state.tagList
 }
 
+// 评论个数文章
 export const commentNews = (state) => {
   if (!state.commentNews.length) {
     return JSON.parse(localStorage.getItem(types.SET_ARTICLE_COMMENT_COUNT)) ? JSON.parse(localStorage.getItem(types.SET_ARTICLE_COMMENT_COUNT)) : {}
@@ -44,4 +45,9 @@ export const commentNews = (state) => {
 
 export const getNewId = (state) => {
   return state.newId
+}
+
+// 是否显示加载更多
+export const isPageRecent = (state) => {
+  return !(state.news.current >= state.news.pages)
 }

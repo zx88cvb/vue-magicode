@@ -1,73 +1,79 @@
 <template>
-  <div class="posts-con">
-    <div class="content ajax-load-con posts-default wow" v-for="(item) of news" :key="item.id">
-      <div class="content-box">
-        <div class="posts-default-img">
-          <router-link :to="`/news/${item.id}`"
-             tag="a">
-            <div class="overlay"></div>
-            <img
-              v-lazy="_imgPath(item.thumbnail)"
-            >
-          </router-link>
-        </div>
-        <div class="posts-default-box">
-          <div class="posts-default-title" @click="selectItem(item.id)">
-            <h2>
-              <a href="#">{{item.title}}</a>
-            </h2>
+  <span>
+    <div class="posts-con">
+      <div class="content ajax-load-con posts-default wow" v-for="(item) of news.records" :key="item.id">
+        <div class="content-box">
+          <div class="posts-default-img">
+            <router-link :to="`/news/${item.id}`"
+              tag="a">
+              <div class="overlay"></div>
+              <img
+                v-lazy="$imgPath(item.thumbnail)"
+              >
+            </router-link>
           </div>
-          <div class="posts-default-content">
-            <div
-              class="posts-text"
-               @click="selectItem(item.id)"
-            >{{item.excerpt}}</div>
-            <div class="posts-default-info">
-              <ul>
-                <li class="post-author hidden-sm-only hidden-xs-only">
-                  <div class="avatar">
-                    <img
-                      alt
-                      v-lazy="_imgPath(item.thumbnail)"
-                      class="avatar avatar-96 photo"
-                      height="96"
-                      width="96"
-                      style="display: block;"
-                    >
-                  </div>
-                  <a href="#" target="_blank">{{item.author}}</a>
-                </li>
-                <li class="ico-cat">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-category"></use>
-                  </svg>
-                  <a href="#">{{item.blogCategoryVo.categoryName}}</a>
-                </li>
-                <li class="ico-time">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-time"></use>
-                  </svg>
-                  {{item.postTime}}
-                </li>
-                <li class="ico-eye hidden-sm-only hidden-xs-only">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-eye"></use>
-                  </svg>
-                  {{item.browseCount}}
-                </li>
-                <li class="ico-like hidden-sm-only hidden-xs-only">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-like"></use>
-                  </svg>
-                  {{item.pollCount}}
-                </li>
-              </ul>
+          <div class="posts-default-box">
+            <div class="posts-default-title" @click="selectItem(item.id)">
+              <h2>
+                <a href="#">{{item.title}}</a>
+              </h2>
+            </div>
+            <div class="posts-default-content">
+              <div
+                class="posts-text"
+                @click="selectItem(item.id)"
+              >{{item.excerpt}}</div>
+              <div class="posts-default-info">
+                <ul>
+                  <li class="post-author hidden-sm-only hidden-xs-only">
+                    <div class="avatar">
+                      <img
+                        alt
+                        v-lazy="$imgPath(item.thumbnail)"
+                        class="avatar avatar-96 photo"
+                        height="96"
+                        width="96"
+                        style="display: block;"
+                      >
+                    </div>
+                    <a href="#" target="_blank">{{item.author}}</a>
+                  </li>
+                  <li class="ico-cat">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-category"></use>
+                    </svg>
+                    <a href="#">{{item.blogCategoryVo.categoryName}}</a>
+                  </li>
+                  <li class="ico-time">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-time"></use>
+                    </svg>
+                    {{item.postTime}}
+                  </li>
+                  <li class="ico-eye hidden-sm-only hidden-xs-only">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-eye"></use>
+                    </svg>
+                    {{item.browseCount}}
+                  </li>
+                  <li class="ico-like hidden-sm-only hidden-xs-only">
+                    <svg class="icon" aria-hidden="true">
+                      <use xlink:href="#icon-like"></use>
+                    </svg>
+                    {{item.pollCount}}
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="clearfix"></div>
+    <div id="ajax-load-posts" v-if="isPageRecent">
+      <button class="button button-more" @click="handleMoreClick(news.current)">加载更多</button>
+    </div>
+  </span>
 </template>
 
 <script>
@@ -76,15 +82,17 @@ export default {
   name: 'MList',
   computed: {
     ...mapGetters([
-      'news'
+      'news',
+      'isPageRecent'
     ])
   },
   methods: {
     selectItem (item) {
       this.$emit('select', item)
     },
-    _imgPath (img) {
-      return `imgPath/${img}`
+    // 加载更多
+    handleMoreClick (current) {
+      this.$emit('handleMoreClick', current)
     }
   }
 }

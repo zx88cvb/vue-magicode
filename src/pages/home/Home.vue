@@ -1,7 +1,7 @@
 <template>
   <div class="page-content">
     <home-swiper :swiperList='swiperList' @handleLoopClick='handleLoopClick'></home-swiper>
-    <main-content></main-content>
+    <main-content @handleMoreClick="handleMoreClick"></main-content>
   </div>
 </template>
 
@@ -10,7 +10,6 @@ import { mapActions } from 'vuex'
 import HomeSwiper from 'pages/home/components/Swiper'
 import MainContent from 'pages/home/components/Content'
 import { ERR_OK } from 'common/js/config'
-import { getBlogArticlePage } from 'api/blog/article'
 import { getContentByTypeAndGroup } from 'api/ad/content'
 export default {
   name: 'home',
@@ -21,56 +20,29 @@ export default {
   data () {
     return {
       swiperList: [],
-      page: {
+      params: {
+        isMore: false,
+        categoryId: null,
         pageNum: 1,
         pageSize: 10
       }
     }
   },
   created () {
-    // 获取新闻数据
-    // this._getBlogArticlePage()
-
-    // this._getRand()
-
     this.getIndexLoop()
-
-    // 获取标签云
-    // this.setTagList()
 
     // 组合 评论新闻和随机文章 标签云
     this.setArticleRandComment()
-
-    // 根据评论获取新闻
-    // this.setArticleComment()
   },
   activated () {
     this._getBlogArticlePage()
   },
   methods: {
     _getBlogArticlePage () {
-      const params = {
-        categoryId: this.categoryId,
-        pageNum: this.page.pageNum,
-        pageSize: this.page.pageSize
-      }
-      let _this = this
-      getBlogArticlePage(params).then((res) => {
-        if (res.code === ERR_OK) {
-          // 将列表数据放入 vuex actions中
-          _this.news(res.data)
-        }
-      })
+      this.params.isMore = false
+      this.params.pageNum = 1
+      this.news(this.params)
     },
-    // _getRand () {
-    //   getRand().then((res) => {
-    //     if (res.code === ERR_OK) {
-    //       // 将列表数据放入 vuex actions中
-    //       this.saveRandNews(res)
-    //     }
-    //   })
-    //   // this.saveRandNews('{a: 1, b: 2}')
-    // },
     // 获取轮播图
     // 查询广告内容
     getIndexLoop () {
@@ -87,6 +59,12 @@ export default {
       this.$router.push({
         path: item.adGroupContextVo.linkUrl
       })
+    },
+    // 加载更多
+    handleMoreClick (current) {
+      this.params.pageNum = current + 1
+      this.params.isMore = true
+      this.news(this.params)
     },
     ...mapActions([
       'news',

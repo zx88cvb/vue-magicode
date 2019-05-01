@@ -9,6 +9,14 @@ const mutations = {
       console.log(e)
     }
   },
+  [types.SET_NEWS_MORE] (state, news) {
+    try {
+      state.news.current = news.current
+      state.news.records = [...state.news.records, ...news.records]
+    } catch (e) {
+      console.log(e)
+    }
+  },
   [types.SET_SINGLE_NEW] (state, singleNew) {
     try {
       localStorage.setItem(types.SET_SINGLE_NEW, JSON.stringify(singleNew))

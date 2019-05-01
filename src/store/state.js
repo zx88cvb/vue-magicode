@@ -1,6 +1,6 @@
 const state = {
   // 新闻集合
-  news: [],
+  news: {},
   // 单个新闻
   singleNew: null,
   // 随机新闻

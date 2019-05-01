@@ -1,4 +1,5 @@
 export const SET_NEWS = 'SET_NEWS'
+export const SET_NEWS_MORE = 'SET_NEWS_MORE'
 export const SET_SINGLE_NEW = 'SET_SINGLE_NEW'
 export const SET_RAND_NEWS = 'SET_RAND_NEWS'
 export const SET_COMMENT_LIST = 'SET_COMMENT_LIST'

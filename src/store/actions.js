@@ -1,6 +1,7 @@
 import * as types from './mutation-types'
 import { ERR_OK } from 'common/js/config'
 import {
+  getBlogArticlePage,
   getBlogArticleById,
   selectNewsComment,
   selectNewsRandThreeComment
@@ -9,8 +10,17 @@ import { recent } from 'api/blog/comment'
 import { getTagAll } from 'api/blog/tag'
 
 // 文章分页查询
-export const news = function ({commit}, {records}) {
-  commit(types.SET_NEWS, records)
+export const news = function ({commit}, params) {
+  getBlogArticlePage(params).then((res) => {
+    if (res.code === ERR_OK) {
+      if (params.isMore) {
+        commit(types.SET_NEWS_MORE, res.data)
+      } else {
+        // 将列表数据放入 vuex actions中
+        commit(types.SET_NEWS, res.data)
+      }
+    }
+  })
 }
 
 // 文章详情
