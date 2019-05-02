@@ -84,18 +84,18 @@ export default {
       'getComment',
       'setArticleLike'
     ])
-  },
-  watch: {
-    // 如果路由有变化，会再次执行该方法
-    '$route' () {
-      // 查询文章
-      this.singleNew(this.id)
-      // 查询评论
-      this.getComment({articleId: this.id})
-      // 查询是否点赞
-      this.getLike(this.id)
-    }
   }
+  // watch: {
+  //   // 如果路由有变化，会再次执行该方法
+  //   '$route' () {
+  //     // 查询文章
+  //     this.singleNew(this.id)
+  //     // 查询评论
+  //     this.getComment({articleId: this.id})
+  //     // 查询是否点赞
+  //     this.getLike(this.id)
+  //   }
+  // }
   // 路由导航守卫
   // beforeRouteUpdate (to, from, next) {
   //   console.log(123)

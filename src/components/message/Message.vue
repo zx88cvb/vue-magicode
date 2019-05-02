@@ -3,7 +3,7 @@
     <div class="comments-box">
       <h3 class="comments-title">
         全部评论:
-        <span class="comments-num">{{commentCount}}条</span>
+        <span class="comments-num">{{commentList.total}}条</span>
       </h3>
       <ul class="commentlist">
         <li class="comment even depth-1" v-for="item of commentList.records" :key="item.id">

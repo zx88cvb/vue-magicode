@@ -9,11 +9,12 @@
         <div class="menu-fix-box">
           <nav>
             <ul>
-              <router-link tag="li" :to="'/'"><a href="">首页</a></router-link>
-              <router-link tag="li" :to="'/category/'+1"><a href="">商业</a></router-link>
-              <router-link tag="li" :to="'/category/'+1"><a href="">设计</a></router-link>
-              <router-link tag="li" :to="'/category/'+1"><a href="">时尚</a></router-link>
-              <router-link tag="li" :to="'/links'"><a href="">友情链接</a></router-link>
+              <router-link tag="li"
+               v-for="item of menu"
+               :key="item.id"
+               :to="item.adGroupContextVo.linkUrl">
+                <span>{{item.adGroupContextVo.title}}</span>
+              </router-link>
             </ul>
           </nav>
         </div>
@@ -42,8 +43,31 @@
 </template>
 
 <script>
+import { getContentByTypeAndGroup } from 'api/ad/content'
+import { ERR_OK } from 'common/js/config'
 export default {
-  name: 'MHeader'
+  name: 'MHeader',
+  data () {
+    return {
+      menu: []
+    }
+  },
+  created () {
+    this.getIndexTopMenu()
+  },
+  methods: {
+    // 获取轮播图
+    // 查询头部内容
+    getIndexTopMenu () {
+      const _this = this
+      getContentByTypeAndGroup(this.CONSTANT.AD.TYPE_KEY.PC_INDEX(), this.CONSTANT.AD.AD_KEY.PC_INDEX_TOP_MENU()).then((res) => {
+        if (res.code === ERR_OK) {
+          // 将列表数据放入 vuex actions中
+          _this.menu = res.data
+        }
+      })
+    }
+  }
 }
 </script>
 
@@ -93,10 +117,11 @@ export default {
             margin: 0 10px
             display: inline-block
             position: relative
-            a
+            span
               height: 80px
               color: $color-text-menu
               line-height: 80px
+              cursor: pointer
     .right-nav
       line-height 80px
       .toggle-message

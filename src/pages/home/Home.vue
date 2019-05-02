@@ -1,7 +1,13 @@
 <template>
   <div class="page-content">
-    <home-swiper :swiperList='swiperList' @handleLoopClick='handleLoopClick'></home-swiper>
-    <main-content @handleMoreClick="handleMoreClick"></main-content>
+    <home-swiper :swiperList='swiperList'
+     @handleLoopClick='handleLoopClick'>
+    </home-swiper>
+    <main-content
+     @handleMoreClick="handleMoreClick"
+     @handleCategoryClick="handleCategoryClick"
+     :listCategory="listCategory">
+    </main-content>
   </div>
 </template>
 
@@ -20,6 +26,7 @@ export default {
   data () {
     return {
       swiperList: [],
+      listCategory: [],
       params: {
         isMore: false,
         categoryId: null,
@@ -30,6 +37,7 @@ export default {
   },
   created () {
     this.getIndexLoop()
+    this.getIndexListCategory()
 
     // 组合 评论新闻和随机文章 标签云
     this.setArticleRandComment()
@@ -54,6 +62,17 @@ export default {
         }
       })
     },
+    // 获取主页列表分类
+    // 查询广告内容
+    getIndexListCategory () {
+      const _this = this
+      getContentByTypeAndGroup(this.CONSTANT.AD.TYPE_KEY.PC_INDEX(), this.CONSTANT.AD.AD_KEY.PC_INDEX_LIST_CATEGORY()).then((res) => {
+        if (res.code === ERR_OK) {
+          // 将列表数据放入 vuex actions中
+          _this.listCategory = res.data
+        }
+      })
+    },
     // 获取轮播图点击事件
     handleLoopClick (item) {
       this.$router.push({
@@ -65,6 +84,11 @@ export default {
       this.params.pageNum = current + 1
       this.params.isMore = true
       this.news(this.params)
+    },
+    // 点击分类
+    handleCategoryClick (categoryId) {
+      this.params.categoryId = categoryId
+      this._getBlogArticlePage()
     },
     ...mapActions([
       'news',

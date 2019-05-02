@@ -4,7 +4,9 @@ export const AD = {
     PC_INDEX: () => 'pc_index'
   },
   AD_KEY: {
-    PC_INDEX_LOOP: () => 'pc_index_loop'
+    PC_INDEX_LOOP: () => 'pc_index_loop',
+    PC_INDEX_TOP_MENU: () => 'pc_index_top_menu',
+    PC_INDEX_LIST_CATEGORY: () => 'pc_index_list_category'
   }
 }
 

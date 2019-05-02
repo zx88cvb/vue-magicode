@@ -7,11 +7,11 @@
           <!-- <home-left></home-left> -->
           <div class="c_left">
             <div class="post-nav">
-              <span class="cat-post current">最新</span>
-              <span class="cat-post">商业</span>
-              <span class="cat-post">时尚</span>
-              <span class="cat-post">短片</span>
-              <span class="cat-post">设计</span>
+              <span class="cat-post"
+               v-for="(item, index) of listCategory"
+               :key="item.id"
+               :class="[ index === checkIndex ? 'current' : '']"
+               @click="handleCategoryClick(item, index)">{{item.adGroupContextVo.title}}</span>
             </div>
             <m-list @select="selectNews" @handleMoreClick="handleMoreClick"></m-list>
           </div>
@@ -31,6 +31,16 @@ import MRight from 'components/content/MRight'
 import MList from 'components/content/MList'
 export default {
   name: 'MainContent',
+  props: {
+    listCategory: {
+      default: Array
+    }
+  },
+  data () {
+    return {
+      checkIndex: 0
+    }
+  },
   components: {
     MRight,
     MList
@@ -44,6 +54,10 @@ export default {
     },
     handleMoreClick (current) {
       this.$emit('handleMoreClick', current)
+    },
+    handleCategoryClick (item, index) {
+      this.checkIndex = index
+      this.$emit('handleCategoryClick', item.adGroupContextVo.content)
     }
   }
 }
