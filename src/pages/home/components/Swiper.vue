@@ -86,6 +86,7 @@ export default {
       img
         width: 100%
         border-radius: 4px
+        cursor: pointer
     .swiper-pagination
       .swiper-pagination-bullet
         background: #fff

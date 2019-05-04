@@ -84,6 +84,19 @@ export default {
       'getComment',
       'setArticleLike'
     ])
+  },
+  beforeRouteUpdate (to, from, next) {
+    // react to route changes...
+    // don't forget to call next()
+    // 如果路由有变化，会再次执行该方法
+    // 查询文章
+    this.singleNew(to.params.id)
+    // 查询评论
+    this.getComment({articleId: to.params.id})
+    // 查询是否点赞
+    this.getLike(to.params.id)
+
+    next()
   }
   // watch: {
   //   // 如果路由有变化，会再次执行该方法
