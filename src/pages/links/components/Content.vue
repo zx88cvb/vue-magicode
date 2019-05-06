@@ -5,9 +5,15 @@
         <span>友情传送</span>
       </div>
       <ul class="link-items">
-        <li class="link-item">
-          <a class="link-item-inner effect-apollo" href="https://www.2zzt.com" title="2主题网" target="_blank" rel=""><img alt="2主题网" src="https://demo.nicetheme.xyz/grace-style1/wp-content/uploads/sites/7/2018/08/2018081122245447-e1533997898150.jpg" title="2主题网">
-            <span class="sitename">2zzt</span>
+        <li class="link-item" v-for="item of linkList" :key="item.id">
+          <a class="link-item-inner effect-apollo"
+            :href="item.adGroupContextVo.linkUrl"
+            :title="item.adGroupContextVo.content"
+            target="_blank">
+            <img :alt="item.adGroupContextVo.content"
+              v-lazy="$imgPath(item.adGroupContextVo.imgUrl)"
+             :title="item.adGroupContextVo.content">
+            <span class="sitename">{{item.adGroupContextVo.content}}</span>
           </a>
         </li>
       </ul>
@@ -17,7 +23,8 @@
 
 <script>
 export default {
-  name: 'linkContent'
+  name: 'linkContent',
+  props: ['linkList']
 }
 </script>
 
