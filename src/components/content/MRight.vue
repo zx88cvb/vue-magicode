@@ -208,4 +208,10 @@ export default {
           border-radius: 2px
           color: rgba(0, 0, 0, .44)
           background-color: rgba(255, 255, 255, .97)
+          -webkit-transition: all .3s ease
+          transition: all .3s ease
+        :hover
+          color: #FFF
+          background: #1B1B1B
+          border-color: #1B1B1B
 </style>
