@@ -6,7 +6,6 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -81,6 +80,36 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
+    proxyTable: {
+      '/userapi':{
+        target:'http://localhost:8082/userapi',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+          '^/userapi':''
+        }
+      },
+      '/blogapi':{
+        target:'http://localhost:8082/blogapi',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+          '^/blogapi':''
+        }
+      },
+      '/adapi':{
+        target:'http://localhost:8082/adapi',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+          '^/adapi':''
+        }
+      },
+      '/imgPath':{
+        target:'http://cdn.angelive.fun',    //http://jsonplaceholder.typicode.com
+        changeOrigin:true,
+        pathRewrite:{
+            '^/imgPath':''
+        }
+      },
+    },
     /**
      * Source Maps
      */

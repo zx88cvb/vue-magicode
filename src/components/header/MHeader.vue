@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { getContentByTypeAndGroup } from 'api/ad/content'
+import { getAdHead } from 'api/ad/content'
 import { ERR_OK } from 'common/js/config'
 export default {
   name: 'MHeader',
@@ -62,9 +62,8 @@ export default {
     // 查询头部内容
     getIndexTopMenu () {
       const _this = this
-      getContentByTypeAndGroup(this.CONSTANT.AD.TYPE_KEY.PC_INDEX(), this.CONSTANT.AD.AD_KEY.PC_INDEX_TOP_MENU()).then((res) => {
+      getAdHead().then((res) => {
         if (res.code === ERR_OK) {
-          // 将列表数据放入 vuex actions中
           _this.menu = res.data
         }
       })

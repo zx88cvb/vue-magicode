@@ -9,7 +9,7 @@
 import PageTitle from 'components/header/PageTitle'
 import LinkContent from 'pages/links/components/Content'
 import { ERR_OK } from 'common/js/config'
-import { getContentByTypeAndGroup } from 'api/ad/content'
+import { getAdLink } from 'api/ad/content'
 export default {
   name: 'links',
   components: {
@@ -29,7 +29,7 @@ export default {
     // 查询广告内容
     getLinkList () {
       const _this = this
-      getContentByTypeAndGroup(this.CONSTANT.AD.TYPE_KEY.PC_LINK(), this.CONSTANT.AD.AD_KEY.PC_LINK_LIST()).then((res) => {
+      getAdLink().then((res) => {
         if (res.code === ERR_OK) {
           // 将列表数据放入 vuex actions中
           _this.linkList = res.data

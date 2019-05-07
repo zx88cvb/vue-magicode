@@ -16,7 +16,7 @@ import { mapActions } from 'vuex'
 import HomeSwiper from 'pages/home/components/Swiper'
 import MainContent from 'pages/home/components/Content'
 import { ERR_OK } from 'common/js/config'
-import { getContentByTypeAndGroup } from 'api/ad/content'
+import { getAdIndex } from 'api/ad/content'
 export default {
   name: 'home',
   components: {
@@ -36,8 +36,7 @@ export default {
     }
   },
   created () {
-    this.getIndexLoop()
-    this.getIndexListCategory()
+    this._getAdIndex()
 
     // 组合 评论新闻和随机文章 标签云
     this.setArticleRandComment()
@@ -51,25 +50,13 @@ export default {
       this.params.pageNum = 1
       this.news(this.params)
     },
-    // 获取轮播图
     // 查询广告内容
-    getIndexLoop () {
+    _getAdIndex () {
       const _this = this
-      getContentByTypeAndGroup(this.CONSTANT.AD.TYPE_KEY.PC_INDEX(), this.CONSTANT.AD.AD_KEY.PC_INDEX_LOOP()).then((res) => {
+      getAdIndex().then((res) => {
         if (res.code === ERR_OK) {
-          // 将列表数据放入 vuex actions中
-          _this.swiperList = res.data
-        }
-      })
-    },
-    // 获取主页列表分类
-    // 查询广告内容
-    getIndexListCategory () {
-      const _this = this
-      getContentByTypeAndGroup(this.CONSTANT.AD.TYPE_KEY.PC_INDEX(), this.CONSTANT.AD.AD_KEY.PC_INDEX_LIST_CATEGORY()).then((res) => {
-        if (res.code === ERR_OK) {
-          // 将列表数据放入 vuex actions中
-          _this.listCategory = res.data
+          _this.swiperList = res.data.swiperList
+          _this.listCategory = res.data.listCategory
         }
       })
     },
