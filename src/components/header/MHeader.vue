@@ -2,7 +2,9 @@
   <header class="navbar-fixed-top">
     <div class="container">
       <h1 class="logo">
-        <a href=""></a>
+        <router-link tag="a"
+               to="/">
+        </router-link>
       </h1>
 
       <div class="site-nav primary-menu">
@@ -21,13 +23,13 @@
       </div>
 
       <div class="right-nav pull-right">
-        <div class="toggle-message">
+        <!-- <div class="toggle-message">
           <button class="js-toggle-message">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-bell"></use>
             </svg>
           </button>
-        </div>
+        </div> -->
         <button class="js-toggle-search">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-search1187938easyiconnet"></use>
@@ -92,7 +94,7 @@ export default {
       float: left
       margin-right: 20px
       a
-        // bg-image('~assets/logo')
+        bg-image('~assets/logo')
         transition: none
         background-size: contain
         background-position: left center
@@ -102,7 +104,6 @@ export default {
         position: relative
         width: 220px
         height: 80px
-        background-image: url(https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/img/logo.png)
     .site-nav
       position: relative
       float: left

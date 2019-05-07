@@ -25,6 +25,13 @@ const Links = (resolve) => {
   })
 }
 
+// 404
+const NotFound = (resolve) => {
+  import('components/content/NotFound').then((module) => {
+    resolve(module)
+  })
+}
+
 export default new Router({
   routes: [
     {
@@ -51,6 +58,10 @@ export default new Router({
     {
       path: '/links',
       component: Links
+    },
+    {
+      path: '*',
+      component: NotFound
     }
   ],
   // 跳转页面回顶部
