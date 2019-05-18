@@ -10,25 +10,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/userapi':{
-        target:'http://localhost:8082/userapi',    //http://jsonplaceholder.typicode.com
+      '/api':{
+        target:'http://localhost:8082',    //http://jsonplaceholder.typicode.com
         changeOrigin:true,
         pathRewrite:{
-          '^/userapi':''
-        }
-      },
-      '/blogapi':{
-        target:'http://localhost:8082/blogapi',    //http://jsonplaceholder.typicode.com
-        changeOrigin:true,
-        pathRewrite:{
-          '^/blogapi':''
-        }
-      },
-      '/adapi':{
-        target:'http://localhost:8082/adapi',    //http://jsonplaceholder.typicode.com
-        changeOrigin:true,
-        pathRewrite:{
-          '^/adapi':''
+          '^/api':''
         }
       },
       '/imgPath':{
@@ -81,25 +67,11 @@ module.exports = {
     assetsPublicPath: '/',
 
     proxyTable: {
-      '/userapi':{
-        target:'http://localhost:8082/userapi',    //http://jsonplaceholder.typicode.com
+      '/api':{
+        target:'http://172.19.197.109:8082',    //http://jsonplaceholder.typicode.com
         changeOrigin:true,
         pathRewrite:{
-          '^/userapi':''
-        }
-      },
-      '/blogapi':{
-        target:'http://localhost:8082/blogapi',    //http://jsonplaceholder.typicode.com
-        changeOrigin:true,
-        pathRewrite:{
-          '^/blogapi':''
-        }
-      },
-      '/adapi':{
-        target:'http://localhost:8082/adapi',    //http://jsonplaceholder.typicode.com
-        changeOrigin:true,
-        pathRewrite:{
-          '^/adapi':''
+          '^/api':''
         }
       },
       '/imgPath':{

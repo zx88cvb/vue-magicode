@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // 查询全部标签
 export function getTagAll () {
-  const url = '/blogapi/blog/tag/all'
+  const url = '/api/blogapi/blog/tag/all'
 
   const data = {
   }

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 // 查询广告内容
 export function getContentByTypeAndGroup (typeKey, adKey) {
-  const url = `/adapi/api/adgroup/${typeKey}/${adKey}/content`
+  const url = `/api/adapi/api/adgroup/${typeKey}/${adKey}/content`
 
   const data = {
 
@@ -18,7 +18,7 @@ export function getContentByTypeAndGroup (typeKey, adKey) {
 
 // 查询主页广告内容
 export function getAdIndex () {
-  const url = '/adapi/api/adgroup/index/content'
+  const url = '/api/adapi/api/adgroup/index/content'
 
   const data = {
 
@@ -34,7 +34,7 @@ export function getAdIndex () {
 
 // 查询头部广告内容
 export function getAdHead () {
-  const url = '/adapi/api/adgroup/header/content'
+  const url = '/api/adapi/api/adgroup/header/content'
 
   const data = {
 
@@ -50,7 +50,7 @@ export function getAdHead () {
 
 // 查询头部广告内容
 export function getAdLink () {
-  const url = '/adapi/api/adgroup/link/content'
+  const url = '/api/adapi/api/adgroup/link/content'
 
   const data = {
 

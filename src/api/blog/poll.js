@@ -3,7 +3,7 @@ import qs from 'qs'
 
 // 新增喜欢
 export function addPoll (form) {
-  const url = `/blogapi/blog/poll/add`
+  const url = `/api/blogapi/blog/poll/add`
 
   const data = qs.stringify(form)
   return axios.post(url, data).then((res) => {
