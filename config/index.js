@@ -66,22 +66,6 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 
-    proxyTable: {
-      '/api':{
-        target:'http://172.19.197.109:8082',    //http://jsonplaceholder.typicode.com
-        changeOrigin:true,
-        pathRewrite:{
-          '^/api':''
-        }
-      },
-      '/imgPath':{
-        target:'http://cdn.angelive.fun',    //http://jsonplaceholder.typicode.com
-        changeOrigin:true,
-        pathRewrite:{
-            '^/imgPath':''
-        }
-      },
-    },
     /**
      * Source Maps
      */

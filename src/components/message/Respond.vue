@@ -11,12 +11,12 @@
         <el-row id="comment-author-info" class="clearfix" :gutter="20">
           <el-col :span="8">
             <el-form-item label="昵称" prop="nickname">
-              <el-input v-model="form.nickname" placeholder="昵称"></el-input>
+              <el-input v-model="form.nickname" placeholder="取一个好听的昵称"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="邮箱" prop="email">
-              <el-input v-model="form.email" placeholder="邮箱"></el-input>
+              <el-input v-model="form.email" placeholder="邮箱将会是完全保密"></el-input>
             </el-form-item>
           </el-col>
           <el-col :span="8">

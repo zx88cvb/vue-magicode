@@ -43,7 +43,7 @@ Vue.use(VueLazyload, {
 Vue.prototype.CONSTANT = constant
 
 // 全局图片
-Vue.prototype.$imgPath = (url) => (`imgPath/${url}`)
+Vue.prototype.$imgPath = (url) => (`http://cdn.angelive.fun/${url}`)
 
 /* eslint-disable no-new */
 new Vue({

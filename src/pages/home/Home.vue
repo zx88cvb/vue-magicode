@@ -30,6 +30,7 @@ export default {
       params: {
         isMore: false,
         categoryId: null,
+        blogStatus: 1,
         pageNum: 1,
         pageSize: 10
       }

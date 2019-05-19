@@ -27,6 +27,7 @@ export default {
         isMore: false,
         categoryId: null,
         tagId: null,
+        blogStatus: 1,
         pageNum: 1,
         pageSize: 10
       }
@@ -40,7 +41,7 @@ export default {
   components: {
     CategoryContent
   },
-  activated () {
+  created () {
     // 获取新闻数据
     this._getBlogArticlePage()
   },
@@ -62,6 +63,15 @@ export default {
       'news'
     ])
   },
+  // beforeRouteUpdate (to, from, next) {
+  //   // react to route changes...
+  //   // don't forget to call next()
+  //   // 如果路由有变化，会再次执行该方法
+  //   this._getBlogArticlePage()
+  //   this.params.categoryId = to.params.categoryId
+  //   this.params.tagId = to.params.tagId
+  //   next()
+  // }
   watch: {
     // 如果路由有变化，会再次执行该方法
     '$route' () {

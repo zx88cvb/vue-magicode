@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <swiper :options="swiperOption" ref="mySwiper">
+    <swiper :options="swiperOption" ref="mySwiper" v-if="swiperList.length>0">
       <!-- slides -->
       <swiper-slide v-for="item of swiperList" :key="item.id">
         <!-- <a :href="item.adGroupContextVo.linkUrl"> -->
