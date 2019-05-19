@@ -8,8 +8,10 @@
               <span>首页</span>
             </router-link>
             <span class="sep">></span>
-            <span class="current">
-              <router-link :to="'/'" v-if="getSingleNew.blogCategoryVo">{{getSingleNew.blogCategoryVo.categoryName}}</router-link>
+            <span class="current"
+              v-if="getSingleNew.blogCategoryVo"
+              @click="handleMenuClick(getSingleNew.blogCategoryVo.id)">
+              {{getSingleNew.blogCategoryVo.categoryName}}
             </span>
             <span class="sep">></span>
             <span class="current">
@@ -64,6 +66,10 @@
       <div class="post-content" v-html="getSingleNew.content">
       </div>
       <div class="clearfix"></div>
+      <div class="post-link" v-if="getSingleNew.linkUrl">
+        <div class="link">本文转自: {{getSingleNew.linkUrl}}</div>
+        <div class="source">来源: {{getSingleNew.source}}</div>
+      </div>
       <div class="post-options">
         <span title="like"
          class="btn-likes like"
@@ -104,6 +110,10 @@ export default {
   methods: {
     handleLikeClick (articleId) {
       this.$emit('handleLikeClick', articleId)
+    },
+    /** 菜单点击 */
+    handleMenuClick (categoryId) {
+      this.$emit('handleMenuClick', categoryId)
     }
   }
 }
@@ -119,8 +129,10 @@ export default {
           font-size: 12px
         span.sep
           margin: 0 5px
-        span.current
-          color: #a5aeb5
+        .current
+          cursor pointer
+          &:last-child
+            color: #a5aeb5
       .post_icon
         color: #748594
         font-size: 12px
@@ -143,6 +155,11 @@ export default {
         margin-bottom: 22px
         line-height: 2.4
         font-size: 16px
+    .post-link
+      font-size: 16px
+      color: #3d464d
+      .link
+        padding-bottom: 10px
     .post-options
       .btn-likes
         width: 130px

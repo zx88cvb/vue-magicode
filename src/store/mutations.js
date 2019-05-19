@@ -64,6 +64,14 @@ const mutations = {
     } catch (e) {
       console.log(e)
     }
+  },
+  [types.SET_MENU_NAME] (state, menuName) {
+    try {
+      localStorage.setItem(types.SET_MENU_NAME, JSON.stringify(menuName))
+      state.menuName = menuName
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 

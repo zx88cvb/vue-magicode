@@ -12,7 +12,9 @@ const state = {
   // 新闻id
   newId: null,
   // 根据评论个数获取到新闻
-  commentNews: []
+  commentNews: [],
+  // 点击头部菜单名称
+  menuName: null
 }
 
 export default state

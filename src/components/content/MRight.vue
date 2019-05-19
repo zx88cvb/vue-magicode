@@ -84,9 +84,12 @@
         </h3>
         <div class="tags">
           <div class="tag_items">
-            <router-link :to="`/tag/${item.id}`" v-for="item of tagList" :key="item.id" tag="span">
+            <span v-for="item of tagList"
+             :key="item.id"
+              tag="span"
+              @click="handleTagClick(item)">
               {{item.tagName}}
-            </router-link>
+            </span>
           </div>
         </div>
       </div>
@@ -94,7 +97,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapMutations, mapGetters } from 'vuex'
 export default {
   name: 'MRight',
   computed: {
@@ -102,6 +105,19 @@ export default {
       'randNews',
       'tagList',
       'commentNews'
+    ])
+  },
+  methods: {
+    handleTagClick (item) {
+      // 将文字存储vuex
+      this.SET_MENU_NAME(item.tagName)
+      // 跳转
+      this.$router.push({
+        path: `/tag/${item.id}`
+      })
+    },
+    ...mapMutations([
+      'SET_MENU_NAME'
     ])
   }
 }

@@ -12,7 +12,7 @@
                   <span>首页</span>
                 </router-link>
                 <span class="sep">></span>
-                <span class="current">商业</span>
+                <span class="current">{{menuName}}</span>
               </span>
             </div>
             <m-list @select="selectNews" @handleMoreClick="handleMoreClick"></m-list>
@@ -33,6 +33,11 @@ import MRight from 'components/content/MRight'
 import MList from 'components/content/MList'
 export default {
   name: 'CategoryContent',
+  props: {
+    menuName: {
+      required: false
+    }
+  },
   components: {
     MRight,
     MList

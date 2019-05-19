@@ -11,26 +11,19 @@
         <div class="menu-fix-box">
           <nav>
             <ul>
-              <router-link tag="li"
-               v-for="item of menu"
+              <li v-for="item of menu"
                :key="item.id"
-               :to="item.adGroupContextVo.linkUrl">
-                <span>{{item.adGroupContextVo.title}}</span>
-              </router-link>
+               @click="handleMenuClick(item)">
+               <span>{{item.adGroupContextVo.title}}</span>
+              </li>
             </ul>
           </nav>
         </div>
       </div>
 
       <div class="right-nav pull-right">
-        <!-- <div class="toggle-message">
-          <button class="js-toggle-message">
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-bell"></use>
-            </svg>
-          </button>
-        </div> -->
-        <button class="js-toggle-search">
+        <button class="js-toggle-search"
+          @click="handleSearchClick">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-search1187938easyiconnet"></use>
           </svg>
@@ -45,6 +38,7 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
 import { getAdHead } from 'api/ad/content'
 import { ERR_OK } from 'common/js/config'
 export default {
@@ -67,7 +61,22 @@ export default {
           _this.menu = res.data
         }
       })
-    }
+    },
+    handleMenuClick (item) {
+      // 将文字存储vuex
+      this.SET_MENU_NAME(item.adGroupContextVo.title)
+      // 跳转
+      this.$router.push({
+        path: item.adGroupContextVo.linkUrl
+      })
+    },
+    /** 搜索 */
+    handleSearchClick () {
+      this.$message.error('搜索功能暂未开放～')
+    },
+    ...mapMutations([
+      'SET_MENU_NAME'
+    ])
   }
 }
 </script>
@@ -136,4 +145,5 @@ export default {
         display: inline-block
         background: transparent
         font-size: 16px
+        cursor pointer
 </style>

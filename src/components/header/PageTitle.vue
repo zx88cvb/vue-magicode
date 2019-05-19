@@ -14,7 +14,7 @@ export default {
 
 <style lang="stylus" scoped>
   .page-title
-    background-image: url(https://demo.nicetheme.xyz/grace-style1/wp-content/themes/grace/img/page_bg.jpg)
+    background-image: url("~assets/image/page_bg.jpg")
     padding: 120px 0 90px
     background-repeat: no-repeat
     background-size: cover

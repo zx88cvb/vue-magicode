@@ -1,11 +1,15 @@
 <template>
   <div class="page-content">
-    <category-content @handleMoreClick="handleMoreClick"></category-content>
+    <category-content
+     @handleMoreClick="handleMoreClick"
+     :menuName="menuName"
+     >
+     </category-content>
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import CategoryContent from 'pages/category/components/Content'
 export default {
   name: 'category',
@@ -27,6 +31,11 @@ export default {
         pageSize: 10
       }
     }
+  },
+  computed: {
+    ...mapGetters([
+      'menuName'
+    ])
   },
   components: {
     CategoryContent

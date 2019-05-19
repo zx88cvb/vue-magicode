@@ -3,12 +3,11 @@
     <div class="footer-box">
       <div class="container">
         <div class="nav-footer">
-            <a href="#">留言</a>
-            <a href="#">购买主题</a>
+            <!-- <a href="#">留言</a> -->
         </div>
         <div class="copyright-footer">
-          <p>Copyright © 2019 Grace主题演示1站
-            · Powered By Vue · Grace Theme By Angel
+          <p>Copyright © 2019 Angelive
+            · Powered By Vue · Theme By Angel
           </p>
         </div>
       </div>

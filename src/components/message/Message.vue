@@ -9,7 +9,7 @@
         <li class="comment even depth-1" v-for="item of commentList.records" :key="item.id">
           <div class="comment-1">
             <div class="comment-avatar">
-              <img alt="" src="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=96&amp;d=mm&amp;r=g" data-original="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=96&amp;d=mm&amp;r=g" srcset="https://secure.gravatar.com/avatar/a4f83c9094bcb014c4d3db146eec0b0e?s=192&amp;d=mm&amp;r=g 2x" class="avatar avatar-96 photo" height="96" width="96" style="display: inline;">
+              <img alt="" src="~assets/image/avatar.png" class="avatar avatar-96 photo" height="96" width="96" style="display: inline;">
             </div>
             <div class="comment-body">
               <div class="comment_author">

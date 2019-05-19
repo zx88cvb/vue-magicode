@@ -5,7 +5,10 @@
           <el-row>
             <!-- 左侧内容 -->
             <el-col :xs="24" :sm="16" :md="16" :span="24">
-              <detail-left :isLike='isLike' @handleLikeClick='handleLikeClick'></detail-left>
+              <detail-left :isLike='isLike'
+               @handleLikeClick='handleLikeClick'
+               @handleMenuClick='handleMenuClick'>
+               </detail-left>
             </el-col>
             <!-- 右侧推荐 -->
             <el-col :xs="24" :sm="8" :md="8" :span="24">
@@ -78,6 +81,13 @@ export default {
       } else {
         this.$message.info('您已经点过赞啦~')
       }
+    },
+    /** 点击菜单 */
+    handleMenuClick (categoryId) {
+      // 跳转
+      this.$router.push({
+        path: `/category/${categoryId}`
+      })
     },
     ...mapActions([
       'singleNew',

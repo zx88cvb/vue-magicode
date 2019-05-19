@@ -51,3 +51,11 @@ export const getNewId = (state) => {
 export const isPageRecent = (state) => {
   return !(state.news.current >= state.news.pages)
 }
+
+// 评论个数文章
+export const menuName = (state) => {
+  if (!state.menuName) {
+    return JSON.parse(localStorage.getItem(types.SET_MENU_NAME)) ? JSON.parse(localStorage.getItem(types.SET_MENU_NAME)) : {}
+  }
+  return state.menuName
+}
