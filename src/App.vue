@@ -4,6 +4,7 @@
       <keep-alive>
         <router-view></router-view>
       </keep-alive>
+      <live-to></live-to>
       <top-scrool></top-scrool>
       <m-footer></m-footer>
   </div>
@@ -13,12 +14,14 @@
 import MHeader from 'components/header/MHeader'
 import MFooter from 'components/footer/MFooter'
 import TopScrool from 'components/tool/TopScrool'
+import LiveTo from 'components/tool/LiveTo'
 export default {
   name: 'App',
   components: {
     MHeader,
     MFooter,
-    TopScrool
+    TopScrool,
+    LiveTo
   },
   mounted () {
     this.cnzz()

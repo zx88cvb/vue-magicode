@@ -9,6 +9,8 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 // Element-ui
 // import ElementUI from 'element-ui'
 import VueLazyload from 'vue-lazyload'
+// live2d
+import live2d from 'live2d-vue'
 // import 'element-ui/lib/theme-chalk/index.css'
 // 基于断点的隐藏类
 import 'element-ui/lib/theme-chalk/display.css'
@@ -38,6 +40,9 @@ Vue.use(VueLazyload, {
   loading: require('./assets/image/loading.jpg'),
   attempt: 1
 })
+
+// live2d
+Vue.use(live2d)
 
 // 常量
 Vue.prototype.CONSTANT = constant
