@@ -25,6 +25,7 @@ export default {
   },
   mounted () {
     this.cnzz()
+    this.baiduSeo()
   },
   methods: {
     cnzz () {
@@ -33,6 +34,17 @@ export default {
       script.src = 'https://s96.cnzz.com/z_stat.php?id=1277622426&web_id=1277622426'
       script.language = 'JavaScript'
       document.body.appendChild(script)
+    },
+    baiduSeo () {
+      let bp = document.createElement('script')
+      let curProtocol = window.location.protocol.split(':')[0]
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js'
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js'
+      }
+      let s = document.getElementsByTagName('script')[0]
+      s.parentNode.insertBefore(bp, s)
     }
   },
   watch: {
