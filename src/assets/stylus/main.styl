@@ -41,24 +41,6 @@ head
     -moz-box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1)
     box-shadow: 0 2px 5px 0 rgba(146, 146, 146, .1)
 
-@media screen and (max-width: 767px)
-  header 
-    .logo
-      text-align: center
-      letter-spacing: 0
-      position: relative
-      margin: 0 auto
-      height: 66px
-      line-height: 66px
-      float: none
-      padding: 0
-      a
-        display inline-block
-        width 150px
-        height 66px
-        background-position center
-
-
 // 详情页
 .post
   padding: 50px 38px
@@ -121,6 +103,9 @@ head
   max-height: 300px
   height: auto
   width: 100%
+@media screen and (max-width: 767px)
+  .posts-default-img 
+    max-height: 150px
 
 .posts-default-img a
   position: relative
@@ -242,3 +227,34 @@ footer
     line-height: 0
   button:hover
     background: #282828
+
+// navbar
+.navbar-nav
+  z-index: 10010
+  margin: 0
+  float: none
+.nav
+  padding-left: 0
+  margin-bottom: 0
+  list-style: none
+  >li
+    display: block
+    >a
+      line-height: 20px
+.body-overlay
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  background: rgba(0, 0, 0, .67)
+  content: ""
+  z-index: 9
+  display: none
+  display: block
+  // visibility: hidden
+  // opacity: 0
+.body-overlay.show-overlay
+  visibility: visible
+  opacity: 1
+  overflow: hidden

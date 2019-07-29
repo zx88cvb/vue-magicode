@@ -105,6 +105,7 @@ export default {
 <style lang="stylus" scoped>
   #app
     position: relative
+    z-index 99
   .tools-panel
     position: fixed
     left: 0

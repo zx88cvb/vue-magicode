@@ -9,7 +9,6 @@
               <div class="overlay"></div>
               <img
                 v-lazy="$imgPath(item.thumbnail)"
-                height="300"
               >
             </router-link>
           </div>

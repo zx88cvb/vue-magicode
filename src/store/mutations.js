@@ -72,6 +72,13 @@ const mutations = {
     } catch (e) {
       console.log(e)
     }
+  },
+  [types.SET_SHOW_BAR] (state, isShowBar) {
+    try {
+      state.isShowBar = isShowBar
+    } catch (e) {
+      console.log(e)
+    }
   }
 }
 

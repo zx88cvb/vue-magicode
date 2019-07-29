@@ -14,7 +14,9 @@ const state = {
   // 根据评论个数获取到新闻
   commentNews: [],
   // 点击头部菜单名称
-  menuName: null
+  menuName: null,
+  // 侧边栏是否显示
+  isShowBar: false
 }
 
 export default state

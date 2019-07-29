@@ -59,3 +59,6 @@ export const menuName = (state) => {
   }
   return state.menuName
 }
+
+// 显示侧边栏
+export const getShowBar = (state) => state.isShowBar
