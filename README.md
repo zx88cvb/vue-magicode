@@ -9,6 +9,7 @@
     CSS样式: stylus
     图片插件: Vue-lazyload
     第三方UI: elementUI
+    有趣的插件: Live2d-vue
 
 ## Build Setup
 
